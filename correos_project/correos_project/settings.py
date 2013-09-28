@@ -129,6 +129,7 @@ INSTALLED_APPS = (
     # 'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
+    'correos',
 )
 
 SESSION_SERIALIZER = 'django.contrib.sessions.serializers.JSONSerializer'
@@ -161,3 +162,9 @@ LOGGING = {
         },
     }
 }
+
+CORREOS_PORT = 1025
+
+CORREOS_SMTP_LOCAL = True
+
+CORREOS_USE_PUBLIC_IP = False
