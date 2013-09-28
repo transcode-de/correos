@@ -1,3 +1,4 @@
+{% load i18n %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -7,13 +8,12 @@
     <meta name="author" content="Markus Zapke-Gründemann, Max Brauer">
     <!--link rel="shortcut icon" href="static/img/favicon.ico" -->
 
-    <title>{% block title %}{% trans 'correos' %}{% endblock %}</title>
+    <title>{% trans 'correos' %}</title>
 
-
-    {% block style %}
+    <!-- styles -->
     <link href="static/css/bootstrap.min.css" rel="stylesheet">
     <link href="static/css/custom.css" rel="stylesheet">
-    {% endblock %}
+    <!-- /styles -->
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -26,32 +26,34 @@
 
   <body>
 
-    <!-- navigation -->
-    <div class="navbar navbar-default navbar-fixed-top">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="#">correos</a>
-      </div>
+    <!-- domains -->
+    <div class="domains grey-box col-md-12">
+      <span class="navbar-brand">correos</span>
     </div>
-    <!-- /navigation -->
+    <!-- /domains -->
 
-    <!-- content -->
-    <div class="container">
-      {% block content %}
-      {% endblock %}
+    <!-- postboxes -->
+    <div class="grey-box full-height col-md-2">
+      Postboxes
     </div>
-    <!-- /content -->
+    <!-- /postboxes -->
+
+    <!-- email-list -->
+    <div class="grey-box full-height col-md-4">
+      E-Mails
+    </div>
+    <!-- /email-list -->
+
+    <!-- email-detail -->
+    <div class="grey-box full-height col-md-6">
+      E-Mail
+    </div>
+    <!-- /email-detail -->
 
     <!-- JavaScript Files -->
-    {% block js %}
     <script src="static/js/jquery.js"></script>
     <script src="static/js/bootstrap.min.js"></script>
     <script src="static/js/knockout-2.3.0.js"></script>
-    {% endblock %}
     <!-- /JavaScript Files -->
 
   </body>
