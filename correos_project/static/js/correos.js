@@ -83,14 +83,14 @@ function MainViewModel() {
 ko.applyBindings(new MainViewModel());
 
 function email_display_format() {
-	$('.display_type_change').on('click', function(){
-		$('.mail-format').hide();
-		$($(this).find('input').data('target')).fadeIn();
-	});
+  $('.display_type_change').on('click', function(){
+    $('.mail-format').hide();
+    $($(this).find('input').data('target')).fadeIn();
+  });
 }
 
 $(function() {
-	$('#reload-domains').tooltip({'placement': 'bottom'});
-	email_display_format();
+  $('#reload-domains').tooltip({'placement': 'bottom'});
+  email_display_format();
 });
 
