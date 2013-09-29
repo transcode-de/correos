@@ -16,7 +16,7 @@ class RecipientSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = Recipient
-        fields = ('url', 'uuid', 'email', 'domain', 'emails_count')
+        fields = ('url', 'uuid', 'email', 'realname', 'domain', 'emails_count')
         depth = 1
 
 

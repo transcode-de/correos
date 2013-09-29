@@ -30,8 +30,9 @@ messages = (
     ('Proin suscipit', proin_suscipit)
 )
 
-recipients_list = ('bob@example.com', 'cindy@example.com', 'dave@example.net',
-    'eris@example.org', 'felix@example.org', 'hannah@example.net')
+recipients_list = ('bob@example.com', 'Cindy <cindy@example.com>',
+    'Dave <dave@example.net>', 'Eris <eris@example.org>', 'felix@example.org',
+    'hannah@example.net')
 
 connection = get_connection(host=get_smtp_host(), port=settings.CORREOS_PORT)
 

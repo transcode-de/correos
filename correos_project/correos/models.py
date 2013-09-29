@@ -16,6 +16,7 @@ class Domain(models.Model):
 class Recipient(models.Model):
     uuid = UUIDField(auto=True, primary_key=True)
     email = models.EmailField(unique=True)
+    realname = models.CharField(max_length=255)
     domain = models.ForeignKey(Domain, related_name='users')
 
     class Meta:
