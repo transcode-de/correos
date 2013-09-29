@@ -44,10 +44,9 @@
           <label class="sr-only" for="domain">
             {% trans 'Domain' %}
           </label>
-          <select name="domain" class="form-control input-sm domain-select">
-            <option>example.com</option>
-            <option>example.de</option>
-            <option>example.co.uk</option>
+          <select name="domain" class="form-control input-sm domain-select" 
+            data-bind="options: domains, value: $root.domain, optionsValue:
+            'name', optionsText: 'name'">
           </select>
         </div>
         <button class="btn btn-sm btn-success" id="reload-domains" data-toggle="tooltip" title="{% trans 'Reload Domains'%}"><i class="glyphicon glyphicon-repeat"></i></button>
