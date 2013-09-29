@@ -46,7 +46,7 @@
     </div>
 
     <div class="grey-box full-height email-detail col-md-6">
-      <!-- ko if: email().recipient -->
+      <div data-bind="visible: email().recipient">
         <h2 class="subject" data-bind="text: email().subject"></h2>
 
         <div class="row">
@@ -78,7 +78,7 @@
         <div class="mail-format" id="plain-text" data-bind="text: email().body"></div>
         <div class="mail-format" id="html" style="display: none;" data-bind="html: email().body"></div>
         <pre class="mail-format" id="raw" style="display: none;" data-bind="text: raw()"></pre>
-      <!-- /ko -->
+      </div>
       <p data-bind="visible: !email().recipient">{% trans 'No email selected.' %}
     </div>
 {% endblock %}

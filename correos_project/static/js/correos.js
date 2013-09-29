@@ -1,4 +1,4 @@
-var emtpyEmail = {
+var emptyEmail = {
   header: {},
   body: ''
 }
@@ -12,7 +12,7 @@ function MainViewModel() {
 
   self.domain = ko.observable();
   self.user = ko.observable();
-  self.email = ko.observable(emtpyEmail);
+  self.email = ko.observable(emptyEmail);
 
   setInterval(function() {
     self.fetchUsers();
@@ -22,7 +22,7 @@ function MainViewModel() {
   self.fetchEmails = function() {
     if (self.user()) {
       $.get('/api/email/?recipient__email=' + self.user(), function(data) {
-        self.emails(_.map(data.results, function(email) {
+        self.emails(_.map(data, function(email) {
           email.header = $.parseJSON(email.header);
           return email;
         }));
@@ -47,17 +47,15 @@ function MainViewModel() {
   };
   self.domain.subscribe(self.fetchUsers);
   self.domain.subscribe(function() {
+    self.user(null);
     self.emails([]);
   });
 
   self.activateUser = function(user) {
-    self.email(emtpyEmail);
+    self.email(emptyEmail);
     self.user(user.email);
   };
   self.user.subscribe(self.fetchEmails);
-  self.user.subscribe(function() {
-    self.email(emptyEmail);
-  });
 
   self.raw = ko.computed(function() {
     var email = self.email();
