@@ -12,6 +12,8 @@ class EmailManager(models.Manager):
         realnames = {}
         for rcptto in message['To'].split(','):
             realname, email = utils.parseaddr(rcptto)
+            if len(realname) == 0:
+                realname = email.split('@')[0]
             realnames[email] = realname
         emails = []
         for rcptto in rcpttos:
