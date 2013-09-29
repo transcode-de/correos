@@ -21,7 +21,7 @@
 {% endblock %}
 
 {% block content %}
-<div class="full-height col-md-12">
+<div class="col-md-12">
   <div class="panel-group" id="accordion" data-bind="foreach: emails()">
     <div class="panel panel-default">
       <div class="panel-heading">
@@ -46,4 +46,5 @@
 {% block js %}
 {{ block.super }}
 <script src="{% static 'js/dashboard.js' %}"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.2.1/moment.min.js"></script>
 {% endblock %}

@@ -1,3 +1,7 @@
+html, body {
+	overflow: auto!important;
+}
+
 .accordion-toggle .subject {
   font-weight: bold;
   display: block;
