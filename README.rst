@@ -4,7 +4,7 @@ Correos
 
 A local mail server and client to be used as a development tool.
 
-Setup the project::
+Set up the project::
 
     $ pip install -r requirements.txt
     $ cd correos_project
