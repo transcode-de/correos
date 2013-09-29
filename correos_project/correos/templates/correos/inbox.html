@@ -25,7 +25,7 @@
         <li data-bind="css: {active: $parent.user() == email}">
           <a href="#" data-bind="click: $parent.activateUser">
             <span class="badge pull-right" data-bind="text: emails_count"></span>
-            <span data-bind="text: name"></span>
+            <span data-bind="text: realname"></span>
           </a>
         </li>
       </ul>
@@ -39,7 +39,7 @@
           <a href="#" data-bind="click: $parent.email">
             <span class="subject" data-bind="text: subject"></span>
             <span class="sender" data-bind="text: sender"></span>
-            <span class="date" data-bind="text: date"></span>
+            <span class="date" data-bind="text: fuzzyDate"></span>
           </a>
         </li>
       </ul>
@@ -88,4 +88,5 @@
 {% block js %}
 {{ block.super }}
 <script src="{% static 'js/correos.js' %}"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.2.1/moment.min.js"></script>
 {% endblock %}

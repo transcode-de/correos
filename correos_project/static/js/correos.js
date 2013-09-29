@@ -24,6 +24,8 @@ function MainViewModel() {
       $.get('/api/email/?recipient__email=' + self.user(), function(data) {
         self.emails(_.map(data, function(email) {
           email.header = $.parseJSON(email.header);
+          email.fuzzyDate = moment.utc(email.date).local().fromNow();
+          email.date = moment.utc(email.date).local().format('YYYY-MM-DD\THH:mm:ss');
           return email;
         }));
       });
@@ -36,21 +38,15 @@ function MainViewModel() {
     $.get('/api/domain/', self.domains);
   };
   self.fetchDomains();
-
-  self.fetchUsers = function() {
-    $.get('/api/user/?domain__name=' + self.domain(), function(users) {
-      self.users(_.map(users, function(user) {
-        user.name = user.email.split('@')[0];
-        return user;
-      }));
-    });
-  };
   self.domain.subscribe(self.fetchUsers);
   self.domain.subscribe(function() {
     self.user(null);
     self.emails([]);
   });
 
+  self.fetchUsers = function() {
+    $.get('/api/user/?domain__name=' + self.domain(), self.users);
+  };
   self.activateUser = function(user) {
     self.email(emptyEmail);
     self.user(user.email);
