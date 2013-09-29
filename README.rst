@@ -36,3 +36,9 @@ CORREOS_SMTP_LOCAL
 
 CORREOS_USE_PUBLIC_IP
     Set to ``True`` to start the SMTP server using your public IP address (default: ``False``)
+
+REST API
+========
+
+Beside the web interface there is a REST API which makes all the data
+available too. The REST API entry point is at ``/api/``.
