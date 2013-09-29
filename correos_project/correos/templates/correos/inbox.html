@@ -55,25 +55,61 @@
     </nav>
     <!-- /domains -->
 
-    <div class="row full-height">
       <!-- postboxes -->
-      <div class="grey-box full-height col-md-2">
-        Postboxes
+      <div class="grey-box full-height postbox-select col-md-2">
+        <h2>{% trans 'Postboxes' %}</h2>
+          <ul class="nav nav-pills nav-stacked">
+            <li>
+              <a href="#">
+                <span class="badge pull-right">7</span>
+                klaus@example.com
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <span class="badge pull-right">17</span>
+                meier@example.com
+              </a>
+            </li>
+            <li>
+              <a href="#" class="active">
+                <span class="badge pull-right">17</span>
+                lothar@example.com
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <span class="badge pull-right">17</span>
+                foo@example.com
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <span class="badge pull-right">17</span>
+                bar@example.com
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <span class="badge pull-right">17</span>
+                bazz@example.com
+              </a>
+            </li>
+        </ul>
       </div>
       <!-- /postboxes -->
 
       <!-- email-list -->
-      <div class="grey-box full-height col-md-4">
-        E-Mails
+      <div class="grey-box full-height email-select col-md-4">
+        <h2>{% trans 'E-Mails' %}</h2>
       </div>
       <!-- /email-list -->
 
       <!-- email-detail -->
-      <div class="grey-box full-height col-md-6">
-        E-Mail
+      <div class="grey-box full-height email-detail col-md-6">
+        <h2>{% trans 'E-Mail' %}</h2>
       </div>
       <!-- /email-detail -->
-      </div>
 
     <!-- JavaScript Files -->
     <script src="{% static 'js/jquery.js' %}"></script>
