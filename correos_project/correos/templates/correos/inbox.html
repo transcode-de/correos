@@ -49,7 +49,7 @@
             'name', optionsText: 'name'">
           </select>
         </div>
-        <button class="btn btn-sm btn-success" id="reload-domains" data-toggle="tooltip" title="{% trans 'Reload Domains'%}"><i class="glyphicon glyphicon-repeat"></i></button>
+        <button class="btn btn-sm btn-success" id="reload-domains" data-toggle="tooltip" title="{% trans 'Reload Domains'%}" data-bind="click: $root.fetchDomains"><i class="glyphicon glyphicon-repeat"></i></button>
       </form>
     </nav>
     <!-- /domains -->

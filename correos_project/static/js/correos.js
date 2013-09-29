@@ -21,12 +21,6 @@ function MainViewModel() {
   self.email = ko.observable({});
 
   setInterval(function() {
-    //$.get('/api/domain/', domains);
-    self.domains([
-      { name: 'example.net' },
-      { name: 'example.org' },
-      { name: 'example.foo' }
-    ]);
     //$.get('/api/user/?domain=' + self.domain.name, users);
     self.users([
       { name: 'cindy@example.com', countMails: 10 },
@@ -42,6 +36,16 @@ function MainViewModel() {
       $.get('/api/email/', self.emails);
     }
   };
+
+  self.fetchDomains = function() {
+    //$.get('/api/domain/', domains);
+    self.domains([
+      { name: 'example.net' },
+      { name: 'example.org' },
+      { name: 'example.foo' }
+    ]);
+  };
+  self.fetchDomains();
 
   self.activateUser = function(user) {
     self.email({});
