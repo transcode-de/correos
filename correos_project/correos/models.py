@@ -8,8 +8,8 @@ from .managers import EmailManager
 class Email(models.Model):
     uuid = UUIDField(auto=True, primary_key=True)
     message_id = models.CharField(max_length=1000)
-    sender = models.CharField(max_length=1000)
-    recipient = models.CharField(max_length=1000)
+    sender = models.EmailField(max_length=1000)
+    recipient = models.EmailField(max_length=1000)
     domain = models.CharField(max_length=200)
     subject = models.CharField(max_length=1000)
     date = models.DateTimeField()
