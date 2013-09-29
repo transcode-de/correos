@@ -39,6 +39,7 @@ class Email(models.Model):
     recipient = models.ForeignKey(Recipient, related_name='emails')
     subject = models.CharField(max_length=1000)
     date = models.DateTimeField()
+    is_multipart = models.BooleanField()
     header = models.TextField()
     body = models.TextField()
 

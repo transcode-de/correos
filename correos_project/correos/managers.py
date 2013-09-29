@@ -23,6 +23,7 @@ class EmailManager(models.Manager):
             email.date = message.get('Date')
             if email.date is not None:
                 email.date = parse(email.date)
+            email.is_multipart = message.is_multipart()
             email.message_id = message['Message-ID']
             email.subject = message['Subject']
             email.header = json.dumps(dict(message.items()))
