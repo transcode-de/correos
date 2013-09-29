@@ -87,7 +87,7 @@
 
     <!-- email-detail -->
     <div class="grey-box full-height email-detail col-md-6">
-      <h2 data-bind="text: email().subject"></h2>
+      <h2 class="subject" data-bind="text: email().subject"></h2>
 
       <div class="row">
         <div class="col-md-1">
@@ -95,12 +95,12 @@
           <span class="recipient">{% trans 'To'%}:</span>
         </div>
 
-        <div class="col-md-8">
+        <div class="col-md-7">
           <span class="sender" data-bind="text: email().sender"></span>
           <span class="recipient" data-bind="text: email().header.To"></span>
         </div>
 
-        <div class="col-md-3">
+        <div class="col-md-4">
           <span class="date pull-right" data-bind="text: email().date"></span>
           <div class="btn-group pull-right" data-toggle="buttons">
             <label class="btn btn-default btn-sm display_type_change active">
@@ -114,10 +114,10 @@
             </label>
           </div>
         </div>
-        <div class="mail-format" id="plain-text" data-bind="text: email().body"></div>
-        <div class="mail-format" id="html" style="display: none;" data-bind="html: email().body"></div>
-        <pre class="mail-format" id="raw" style="display: none;" data-bind="text: raw()"></pre>
       </div>
+      <div class="mail-format" id="plain-text" data-bind="text: email().body"></div>
+      <div class="mail-format" id="html" style="display: none;" data-bind="html: email().body"></div>
+      <pre class="mail-format" id="raw" style="display: none;" data-bind="text: raw()"></pre>
     </div>
     <!-- JavaScript Files -->
     <script src="{% static 'js/jquery.js' %}"></script>
