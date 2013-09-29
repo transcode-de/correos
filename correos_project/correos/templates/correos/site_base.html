@@ -34,16 +34,19 @@
 
       {% block page-navbar %}
       {% endblock %}
-      <!--
       <ul class="nav navbar-nav navbar-right">
+        <li class="{% block api-link-class %}{% endblock %}">
+          <a href="{% url 'api-root' %}" target="blank">{% trans 'REST API' %}</a>
+        </li>
+      <!--
         <li class="{% block index-link-class %}{% endblock %}">
           <a href="{% url 'correos_inbox' %}">{% trans 'Mailboxes' %}</a>
         </li>
         <li class="{% block dashboard-link-class %}{% endblock %}">
           <a href="{% url 'correos_dashboard' %}">{% trans 'Dashboard' %}</a>
         </li>
-      </ul>
       -->
+      </ul>
     </nav>
 
     {% block content %}
