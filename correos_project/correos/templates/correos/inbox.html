@@ -71,6 +71,7 @@
       <!-- email-list -->
       <div class="grey-box full-height email-select col-md-4">
         <h2>{% trans 'E-Mails' %}</h2>
+        <!-- ko if: emails().length > 0 -->
         <ul class="nav nav-pills nav-stacked" data-bind="foreach: emails()">
           <li data-bind="css: {active: $parent.email().uuid == uuid}">
             <a href="#" data-bind="click: $parent.email">
@@ -80,6 +81,8 @@
             </a>
           </li>
         </ul>
+        <!-- /ko -->
+        <p data-bind="visible: !emails().length">{% trans 'Please choose a postbox.' %}
       </div>
       <!-- /email-list -->
 

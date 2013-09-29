@@ -33,7 +33,7 @@ function MainViewModel() {
     if (self.user()) {
       $.get('/api/email/?recipient=' + self.user(), self.emails);
     } else {
-      $.get('/api/email/', self.emails);
+      self.emails([]);
     }
   };
 
