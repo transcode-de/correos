@@ -26,4 +26,4 @@ class Email(models.Model):
             self.domain = '.'.join(self.recipient.split('@')[1].split('.')[-2:])
         if self.date is None:
             self.date = now()
-        return super(Email, self).save(*args, **kwargs)
+        super(Email, self).save(*args, **kwargs)
