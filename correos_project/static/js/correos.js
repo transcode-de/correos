@@ -21,7 +21,7 @@ function MainViewModel() {
   setInterval(function() {
     self.fetchUsers();
     self.fetchEmails({prepend: true});
-  }, 5000);
+  }, 2000);
 
   self.fetchEmails = function(options) {
     if (self.user()) {
@@ -56,8 +56,8 @@ function MainViewModel() {
     $.get('/api/domain/', self.domains);
   };
   self.fetchDomains();
-  self.domain.subscribe(self.fetchUsers);
   self.domain.subscribe(function() {
+    self.fetchUsers();
     self.user(null);
     self.emails([]);
   });
