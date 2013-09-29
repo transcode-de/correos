@@ -64,7 +64,10 @@ h2 {
 }
 
 .email-select .preview {
+    display: block;
     color: #888;
+    max-height: 3em;
+	overflow-y: hidden;
 }
 
 .email-select .active .sender, .email-select .active .date {

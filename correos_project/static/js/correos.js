@@ -30,7 +30,7 @@ function MainViewModel() {
           email.header = $.parseJSON(email.header);
           email.fuzzyDate = moment.utc(email.date).local().fromNow();
           email.date = moment.utc(email.date).local().format('YYYY-MM-DD\THH:mm:ss');
-          email.preview = stripHTML(email.body).slice(0, 150);
+          email.preview = stripHTML(email.body);
           return email;
         }));
       });
