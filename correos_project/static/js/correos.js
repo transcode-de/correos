@@ -20,19 +20,32 @@ function MainViewModel() {
 
   setInterval(function() {
     self.fetchUsers();
-    self.fetchEmails();
+    self.fetchEmails({prepend: true});
   }, 5000);
 
-  self.fetchEmails = function() {
+  self.fetchEmails = function(options) {
     if (self.user()) {
-      $.get('/api/email/?recipient__email=' + self.user(), function(data) {
-        self.emails(_.map(data.results, function(email) {
+      var existingEmails = self.emails();
+      var params = {
+        recipient__email: self.user(),
+      };
+      if (options.prepend && existingEmails[0]) {
+        params.after = existingEmails[0].date;
+      }
+      $.get('/api/email', params , function(data) {
+        var newEmails = _.map(data.results, function(email) {
           email.header = $.parseJSON(email.header);
           email.fuzzyDate = moment.utc(email.date).local().fromNow();
-          email.date = moment.utc(email.date).local().format('YYYY-MM-DD\THH:mm:ss');
+          email.formatedDate = moment.utc(email.date).local().format('YYYY-MM-DD\THH:mm:ss');
           email.preview = stripHTML(email.body);
           return email;
-        }));
+        });
+        if (newEmails.length) {
+          if (options.prepend) {
+            newEmails = newEmails.concat(existingEmails);
+          }
+          self.emails(newEmails);
+        }
       });
     } else {
       self.emails([]);
@@ -77,7 +90,6 @@ function email_display_format() {
 }
 
 $(function() {
-	$('.postbox-select, .email-select, .email-detail').niceScroll();
 	$('#reload-domains').tooltip({'placement': 'bottom'});
 	email_display_format();
 });
