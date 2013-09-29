@@ -22,7 +22,7 @@ function MainViewModel() {
   self.fetchEmails = function() {
     if (self.user()) {
       $.get('/api/email/?recipient__email=' + self.user(), function(data) {
-        self.emails(_.map(data, function(email) {
+        self.emails(_.map(data.results, function(email) {
           email.header = $.parseJSON(email.header);
           email.fuzzyDate = moment.utc(email.date).local().fromNow();
           email.date = moment.utc(email.date).local().format('YYYY-MM-DD\THH:mm:ss');
