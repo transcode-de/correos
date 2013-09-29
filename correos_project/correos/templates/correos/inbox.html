@@ -57,10 +57,10 @@
     <!-- postboxes -->
     <div class="grey-box full-height postbox-select col-md-2">
       <ul class="nav nav-pills nav-stacked" data-bind="foreach: users()">
-        <li data-bind="css: {active: $parent.user() == name}">
+        <li data-bind="css: {active: $parent.user() == email}">
           <a href="#" data-bind="click: $parent.activateUser">
-            <span class="badge pull-right" data-bind="text: countMails"></span>
-            <span data-bind="text: name"></span>
+            <span class="badge pull-right" data-bind="text: emails_count"></span>
+            <span data-bind="text: email"></span>
           </a>
         </li>
       </ul>
@@ -87,6 +87,7 @@
 
     <!-- email-detail -->
     <div class="grey-box full-height email-detail col-md-6">
+      <h2 data-bind="text: email().subject"></h2>
 
       <div class="row">
         <div class="col-md-1">
@@ -113,12 +114,10 @@
             </label>
           </div>
         </div>
-        <span data-bind="text: email().subject"></span>
         <div class="mail-format" id="plain-text" data-bind="text: email().body"></div>
         <div class="mail-format" id="html" style="display: none;" data-bind="html: email().body"></div>
         <pre class="mail-format" id="raw" style="display: none;" data-bind="text: raw()"></pre>
       </div>
-      <span class="subject">{% trans 'Subject' %}: Wellcome at example.co.uk!</span>
     </div>
     <!-- JavaScript Files -->
     <script src="{% static 'js/jquery.js' %}"></script>

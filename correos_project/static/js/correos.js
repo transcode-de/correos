@@ -21,35 +21,28 @@ function MainViewModel() {
   self.email = ko.observable({});
 
   setInterval(function() {
-    //$.get('/api/user/?domain=' + self.domain.name, users);
-    self.users([
-      { name: 'cindy@example.com', countMails: 10 },
-      { name: 'bob@example.com', countMails: 15 },
-    ]);
+    $.get('/api/user/?domain__name=' + self.domain(), self.users);
     self.fetchEmails();
   }, 1000);
 
   self.fetchEmails = function() {
     if (self.user()) {
-      $.get('/api/email/?recipient=' + self.user(), self.emails);
+      $.get('/api/email/?recipient__email=' + self.user(), function(data) {
+        self.emails(data.results);
+      });
     } else {
       self.emails([]);
     }
   };
 
   self.fetchDomains = function() {
-    //$.get('/api/domain/', domains);
-    self.domains([
-      { name: 'example.net' },
-      { name: 'example.org' },
-      { name: 'example.foo' }
-    ]);
+    $.get('/api/domain/', self.domains);
   };
   self.fetchDomains();
 
   self.activateUser = function(user) {
     self.email({});
-    self.user(user.name);
+    self.user(user.email);
   };
 
   self.raw = ko.computed(function() {
