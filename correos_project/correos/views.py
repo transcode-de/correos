@@ -24,4 +24,3 @@ class EmailViewSet(viewsets.ModelViewSet):
     queryset = Email.objects.all()
     serializer_class = serializers.EmailSerializer
     filter_fields = ('sender', 'recipient__email')
-    paginate_by = 10
