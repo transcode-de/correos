@@ -40,7 +40,6 @@ h2 {
 .email-select .subject, .email-detail .subject {
 	color: #000;
 	font-weight: bold;
-	font-size: 130%;
 	display: block;
 }
 
@@ -50,6 +49,10 @@ h2 {
 
 .email-select .sender, .email-select .date {
 	color: #5E5E5E;
+}
+
+.email-select .date {
+	color: #428bca;
 }
 
 .email-select .active .sender, .email-select .active .date {
