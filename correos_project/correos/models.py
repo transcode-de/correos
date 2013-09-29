@@ -18,6 +18,9 @@ class Email(models.Model):
 
     objects = EmailManager()
 
+    class Meta:
+        ordering = ['-date']
+
     def __unicode__(self):
         return self.message_id
 

@@ -1,7 +1,12 @@
 from django.conf.urls import patterns, include, url
+from rest_framework import routers
 
-from .views import InboxView
+from . import views
+
+router = routers.DefaultRouter()
+router.register(r'email', views.EmailViewSet)
 
 urlpatterns = patterns('',
-    url(r'^$', InboxView.as_view(), name='correos_inbox'),
+    url(r'^api/', include(router.urls)),
+    url(r'^$', views.InboxView.as_view(), name='correos_inbox'),
 )
