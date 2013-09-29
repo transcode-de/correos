@@ -1,11 +1,39 @@
 {% extends 'correos/site_base.html' %}
+{% load static %}
 
 {% block title %}{{ block.super }} - Dashboard{% endblock %}
+
+{% block styles %}
+{{ block.super }}
+<link href="{% static 'css/dashboard.css' %}" rel="stylesheet">
+{% endblock %}
 
 {% block dashboard-link-class %}active{% endblock %}
 
 {% block content %}
-<div class="grey-box full-height col-md-12">
-
+<div class="full-height col-md-12">
+  <div class="panel-group" id="accordion" data-bind="foreach: emails()">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" data-bind="attr: {'href': '#' + uuid}" href="">
+            <span class="date" data-bind="text: date"></span>
+            <span class="subject" data-bind="text: subject"></span>
+            From: <span class="sender" data-bind="text: sender"></span><br />
+            To: <span class="sender" data-bind="text: recipient.email"></span>
+          </a>
+        </h4>
+      </div>
+      <div class="panel-collapse collapse" id="" data-bind="attr: {'id': uuid}">
+        <div class="panel-body" data-bind="text: body">
+          Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+      </div>
+    </div>
+  </div>
 </div>
+{% endblock %}
+
+{% block js %}
+{{ block.super }}
+<script src="{% static 'js/dashboard.js' %}"></script>
 {% endblock %}

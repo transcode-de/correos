@@ -1,0 +1,20 @@
+html, body {
+  overflow-y: auto!important;
+}
+
+.accordion-toggle .subject {
+  font-weight: bold;
+  display: block;
+  text-decoration: none;
+  font-size: 120%;
+}
+
+.accordion-toggle .from, .accordion-toggle .to, .accordion-toggle .date {
+  font-size: 70%;
+  font-weight: normal;
+}
+
+.accordion-toggle .date {
+  float: right;
+  font-size: 100%;
+}
