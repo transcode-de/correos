@@ -1,7 +1,7 @@
 function MainViewModel() {
   self = this;
   self.emails = ko.observableArray();
-  self.next_url = ko.observable('/api/email/?page_size=7');
+  self.next_url = ko.observable('/api/email/?page_size=8');
   self.previous_url = ko.observable();
 
   self.fetchEmails = function(url) {
@@ -10,6 +10,7 @@ function MainViewModel() {
         self.next_url(data['next']);
         self.previous_url(data['previous']);
         self.emails(_.map(data['results'], function(email) {
+          email.date = moment.utc(email.date).local().format('YYYY-MM-DD\THH:mm:ss');
           email.header = $.parseJSON(email.header);
           return email;
       }));
