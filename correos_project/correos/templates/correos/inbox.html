@@ -59,7 +59,7 @@
         <h2>{% trans 'Postboxes' %}</h2>
         <ul class="nav nav-pills nav-stacked" data-bind="foreach: users()">
           <li data-bind="css: {active: $parent.user() == name}">
-            <a href="#" data-bind="click: $parent.activate">
+            <a href="#" data-bind="click: $parent.activateUser">
               <span class="badge pull-right" data-bind="text: countMails"></span>
               <span data-bind="text: name"></span>
             </a>
@@ -72,8 +72,8 @@
       <div class="grey-box full-height email-select col-md-4">
         <h2>{% trans 'E-Mails' %}</h2>
         <ul class="nav nav-pills nav-stacked" data-bind="foreach: emails()">
-          <li>
-            <a href="#">
+          <li data-bind="css: {active: $parent.email().uuid == uuid}">
+            <a href="#" data-bind="click: $parent.email">
               <span class="subject" data-bind="text: subject"></span>
               <span class="sender" data-bind="text: sender"></span>
               <span class="date" data-bind="text: date"></span>
@@ -86,6 +86,7 @@
       <!-- email-detail -->
       <div class="grey-box full-height email-detail col-md-6">
         <h2>{% trans 'E-Mail' %}</h2>
+        <span data-bind="text: email().body"></span>
       </div>
       <!-- /email-detail -->
 

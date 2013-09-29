@@ -18,7 +18,7 @@ function MainViewModel() {
 
   self.domain = ko.observable();
   self.user = ko.observable();
-  self.email = ko.observable();
+  self.email = ko.observable({body: ''});
 
   setInterval(function() {
     //$.get('/api/domain/', function(domains) {
@@ -47,7 +47,7 @@ function MainViewModel() {
     }
   }
 
-  self.activate = function(user) {
+  self.activateUser = function(user) {
     self.user(user.name);
   }
 }
