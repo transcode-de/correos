@@ -9,6 +9,10 @@ class InboxView(TemplateView):
     template_name = 'correos/inbox.html'
 
 
+class DashboardView(TemplateView):
+    template_name = 'correos/dashboard.html'
+
+
 class DomainViewSet(viewsets.ModelViewSet):
     queryset = Domain.objects.all()
     serializer_class = serializers.DomainSerializer

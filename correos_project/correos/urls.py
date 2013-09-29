@@ -10,5 +10,6 @@ router.register(r'email', views.EmailViewSet)
 
 urlpatterns = patterns('',
     url(r'^api/', include(router.urls)),
+    url(r'^dashboard/$', views.DashboardView.as_view(), name='correos_dashboard'),
     url(r'^$', views.InboxView.as_view(), name='correos_inbox'),
 )
