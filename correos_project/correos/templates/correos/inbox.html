@@ -72,7 +72,7 @@
               <label class="btn btn-default btn-sm display_type_change active">
                 <input type="radio" class="display_type_change" name="email_display_type" data-target="#plain-text"> Plain Text
               </label>
-              <label class="btn btn-default btn-sm display_type_change">
+              <label data-bind="visible: email().is_multipart" class="btn btn-default btn-sm display_type_change">
                 <input type="radio" class="display_type_change" name="email_display_type" data-target="#html"> HTML
               </label>
               <label class="btn btn-default btn-sm display_type_change">
