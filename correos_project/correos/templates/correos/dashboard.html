@@ -10,6 +10,13 @@
 
 {% block dashboard-link-class %}active{% endblock %}
 
+{% block page-navbar %}
+<form class="navbar-form navbar-left">
+  <button class="btn btn-sm btn-success" data-bind="click: $root.fetchPreviousEmails, visible: $root.previous_url">Prev</button>
+  <button class="btn btn-sm btn-success" data-bind="click: $root.fetchNextEmails, visible: $root.next_url">Next</button>
+</form>
+{% endblock %}
+
 {% block content %}
 <div class="full-height col-md-12">
   <div class="panel-group" id="accordion" data-bind="foreach: emails()">
