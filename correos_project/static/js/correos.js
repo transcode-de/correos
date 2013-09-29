@@ -51,6 +51,15 @@ function MainViewModel() {
     self.email({});
     self.user(user.name);
   };
+
+  self.raw = ko.computed(function() {
+    var email = self.email();
+    if (email.header) {
+      return _.reduce($.parseJSON(email.header), function(result, value, key) {
+        return result + key + ': ' + value + '\n';
+      }, '') + '\n' + email.body;
+    }
+  });
 }
 ko.applyBindings(new MainViewModel());
 

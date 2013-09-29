@@ -95,12 +95,12 @@
         </div>
 
         <div class="col-md-8">
-          <span class="sender">admin@example.co.uk</span>
-          <span class="recipient">meier@example.com</span>
+          <span class="sender" data-bind="text: email().sender"></span>
+          <span class="recipient" data-bind="text: email().recipent"></span>
         </div>
 
         <div class="col-md-3">
-          <span class="date pull-right">29. Sep 2013, 2pm</span>
+          <span class="date pull-right" data-bind="text: email().date"></span>
           <div class="btn-group pull-right" data-toggle="buttons">
             <label class="btn btn-default btn-sm display_type_change active">
               <input type="radio" class="display_type_change" name="email_display_type" data-target="#plain-text"> Plain Text
@@ -113,80 +113,17 @@
             </label>
           </div>
         </div>
+        <span data-bind="text: email().subject"></span>
+        <div class="mail-format" id="plain-text" data-bind="text: email().body"></div>
+        <div class="mail-format" id="html" style="display: none;" data-bind="html: email().body"></div>
+        <pre class="mail-format" id="raw" style="display: none;" data-bind="text: raw()"></pre>
       </div>
       <span class="subject">{% trans 'Subject' %}: Wellcome at example.co.uk!</span>
-      <div class="mail-format" id="plain-text">
-        Hi,<br />
-        <br />
-        we want to verify that you are indeed "Herr Meier".<br />
-        <br />
-        If so, please click the following Link or copy it into your Browsers Addressbar:<br />
-        <br />
-        <a href="https://example.co.uk/verifyEmail/23hjdsgfh08324nkjysdhjkjkh">https://example.co.uk/verifyEmail/23hjdsgfh08324nkjysdhjkjkh</a> <br />
-        <br />
-        If you're not "HerrMeier" you can ignore this email.<br />
-        <br />
-        With kind regards,<br />
-        <br />
-        Your example.co.uk-Team
-      </div>
-      <div class="mail-format" id="html" style="display: none;">
-        <p>Hi,</p>
-
-        <p>we want to verify that you are indeed "Herr Meier".</p>
-
-        <p>If so, please click the following Link or copy it into your Browsers Addressbar:</p>
-
-        <p><a href="https://example.co.uk/verifyEmail/23hjdsgfh08324nkjysdhjkjkh">https://example.co.uk/verifyEmail/23hjdsgfh08324nkjysdhjkjkh</a></p>
-
-        <p>If you're not "HerrMeier" you can ignore this email.</p>
-
-        <p>With kind regards,</p>
-        <p>Your example.co.uk-Team</p>
-      </div>
-      <pre class="mail-format" id="raw" style="display: none;">
-        <code>
-Return-path: &lt;noreply@example.co.uk&gt;
-Envelope-to: &lt;meier@example.com&gt;
-Received: from smtp1.example.co.uk ([127.0.0.0]:43818)
-by mail1.example.com with esmtp (Exim 4.72)
-(envelope-from &lt;noreply@example.co.uk&gt;)
-id 1UDcIZ-0001LT-9Z
-for meier@example.com; Sun, 29 Sep 2013 14:00:02 +0200
-Date: Sun, 29 Sep 2013 14:00:02 +0200
-From: Admin &lt;admin@example.co.uk&gt;
-To: Herr Meier &lt;meier@example.com&gt;
-Message-ID: &lt;dfajklkleragjknnjklfe2.rs.example.co.uk.mail&gt;
-Subject: Wellcome at example.co.uk!
-Mime-Version: 1.0
-Content-Type: html;
-charset=UTF-8
-Content-Transfer-Encoding: 7bit
-X-Spam-Score: -2.1
-X-Spam-Level: --
-X-Spam-Flag: NO
-X-Processed-Server: mail1.example.com
-
-&lt;p&gt;Hi,&lt;/p&gt;
-
-&lt;p&gt;we want to verify that you are indeed "Herr Meier".&lt;/p&gt;
-
-&lt;p&gt;If so, please click the following Link or copy it into your Browsers Addressbar:&lt;/p&gt;
-
-&lt;p&gt;&lt;a href="https://example.co.uk/verifyEmail/23hjdsgfh08324nkjysdhjkjkh"&gt;https://example.co.uk/verifyEmail/23hjdsgfh08324nkjysdhjkjkh&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;If you're not "HerrMeier" you can ignore this email.&lt;/p&gt;
-
-&lt;p&gt;With kind regards,&lt;/p&gt;
-&lt;p&gt;Your example.co.uk-Team&lt;/p&gt;
-        </code>
-      </pre>
     </div>
-    <!-- /email-detail -->
-
     <!-- JavaScript Files -->
     <script src="{% static 'js/jquery.js' %}"></script>
     <script src="{% static 'js/jquery.nicescroll.min.js' %}"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/2.1.0/lodash.backbone.js"></script>
     <script src="{% static 'js/bootstrap.min.js' %}"></script>
     <script src="{% static 'js/knockout-2.3.0.js' %}"></script>
     <script src="{% static 'js/correos.js' %}"></script>
