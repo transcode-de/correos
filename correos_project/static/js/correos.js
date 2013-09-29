@@ -15,9 +15,9 @@ function MainViewModel() {
   self.email = ko.observable(emtpyEmail);
 
   setInterval(function() {
-    $.get('/api/user/?domain__name=' + self.domain(), self.users);
+    self.fetchUsers();
     self.fetchEmails();
-  }, 1000);
+  }, 5000);
 
   self.fetchEmails = function() {
     if (self.user()) {
@@ -37,10 +37,16 @@ function MainViewModel() {
   };
   self.fetchDomains();
 
+  self.fetchUsers = function() {
+    $.get('/api/user/?domain__name=' + self.domain(), self.users);
+  };
+  self.domain.subscribe(self.fetchUsers);
+
   self.activateUser = function(user) {
     self.email(emtpyEmail);
     self.user(user.email);
   };
+  self.user.subscribe(self.fetchEmails);
 
   self.raw = ko.computed(function() {
     var email = self.email();
