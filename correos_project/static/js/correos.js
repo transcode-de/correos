@@ -1,7 +1,7 @@
 var emptyEmail = {
   header: {},
   body: ''
-}
+};
 
 function MainViewModel() {
   self = this;
