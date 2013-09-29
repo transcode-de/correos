@@ -1,12 +1,6 @@
-function Email(data) {
-  this.header = {};
-  this.raw = '';
-  this.sender = '';
-  this.recipient = '';
-  this.domain = '';
-  this.date = new Date();
-  this.body = '';
-  this.subject = '';
+var emtpyEmail = {
+  header: {},
+  body: ''
 }
 
 function MainViewModel() {
@@ -18,7 +12,7 @@ function MainViewModel() {
 
   self.domain = ko.observable();
   self.user = ko.observable();
-  self.email = ko.observable({});
+  self.email = ko.observable(emtpyEmail);
 
   setInterval(function() {
     $.get('/api/user/?domain__name=' + self.domain(), self.users);
@@ -28,7 +22,10 @@ function MainViewModel() {
   self.fetchEmails = function() {
     if (self.user()) {
       $.get('/api/email/?recipient__email=' + self.user(), function(data) {
-        self.emails(data.results);
+        self.emails(_.map(data.results, function(email) {
+          email.header = $.parseJSON(email.header);
+          return email;
+        }));
       });
     } else {
       self.emails([]);
@@ -41,14 +38,14 @@ function MainViewModel() {
   self.fetchDomains();
 
   self.activateUser = function(user) {
-    self.email({});
+    self.email(emtpyEmail);
     self.user(user.email);
   };
 
   self.raw = ko.computed(function() {
     var email = self.email();
     if (email.header) {
-      return _.reduce($.parseJSON(email.header), function(result, value, key) {
+      return _.reduce(email.header, function(result, value, key) {
         return result + key + ': ' + value + '\n';
       }, '') + '\n' + email.body;
     }
