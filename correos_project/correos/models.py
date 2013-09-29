@@ -49,7 +49,7 @@ class Email(models.Model):
         unique_together = ('message_id', 'recipient')
 
     def __unicode__(self):
-        return self.message_id
+        return '%s for %s' % (self.message_id, self.recipient)
 
     def save(self, *args, **kwargs):
         if self.date is None:
