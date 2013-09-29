@@ -15,7 +15,7 @@ class Domain(models.Model):
 
 class Recipient(models.Model):
     uuid = UUIDField(auto=True, primary_key=True)
-    email = models.EmailField(max_length=1000, unique=True)
+    email = models.EmailField(unique=True)
     domain = models.ForeignKey(Domain, related_name='users')
 
     class Meta:
@@ -34,7 +34,7 @@ class Recipient(models.Model):
 class Email(models.Model):
     uuid = UUIDField(auto=True, primary_key=True)
     message_id = models.CharField(max_length=1000)
-    sender = models.EmailField(max_length=1000)
+    sender = models.EmailField()
     recipient = models.ForeignKey(Recipient, related_name='emails')
     subject = models.CharField(max_length=1000)
     date = models.DateTimeField()
