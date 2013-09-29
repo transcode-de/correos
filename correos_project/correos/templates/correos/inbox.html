@@ -28,28 +28,52 @@
   <body>
 
     <!-- domains -->
-    <div class="domains grey-box col-md-12">
-      <span class="navbar-brand">correos</span>
-    </div>
+    <nav class="navbar navbar-default" role="navigation">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">correos</a>
+      </div>
+
+      <form class="navbar-form navbar-left" role="search">
+        <div class="form-group">
+          <label class="sr-only" for="domain">
+            {% trans 'Domain' %}
+          </label>
+          <select name="domain" class="form-control input-sm domain-select">
+            <option>example.com</option>
+            <option>example.de</option>
+            <option>example.co.uk</option>
+          </select>
+        </div>
+        <button class="btn btn-sm btn-success"><i class="glyphicon glyphicon-repeat"></i></button>
+      </form>
+    </nav>
     <!-- /domains -->
 
-    <!-- postboxes -->
-    <div class="grey-box full-height col-md-2">
-      Postboxes
-    </div>
-    <!-- /postboxes -->
+    <div class="row full-height">
+      <!-- postboxes -->
+      <div class="grey-box full-height col-md-2">
+        Postboxes
+      </div>
+      <!-- /postboxes -->
 
-    <!-- email-list -->
-    <div class="grey-box full-height col-md-4">
-      E-Mails
-    </div>
-    <!-- /email-list -->
+      <!-- email-list -->
+      <div class="grey-box full-height col-md-4">
+        E-Mails
+      </div>
+      <!-- /email-list -->
 
-    <!-- email-detail -->
-    <div class="grey-box full-height col-md-6">
-      E-Mail
-    </div>
-    <!-- /email-detail -->
+      <!-- email-detail -->
+      <div class="grey-box full-height col-md-6">
+        E-Mail
+      </div>
+      <!-- /email-detail -->
+      </div>
 
     <!-- JavaScript Files -->
     <script src="{% static 'js/jquery.js' %}"></script>

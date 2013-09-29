@@ -7,6 +7,14 @@ body, html, .full-height {
     border: 1px solid rgb(231, 231, 231);
 }
 
-.domains {
-	height: 51px;
+.navbar {
+	margin-bottom: 0;
+}
+
+.navbar-brand {
+	border-right: 1px solid #E7E7E7;
+}
+
+.domain-select {
+	min-width: 200px
 }
