@@ -9,7 +9,7 @@ Quickstart
 
 Set up the project::
 
-    $ pip install -r requirements.txt
+    $ pip install -r requirements/base.txt
     $ cd correos_project
     $ python manage.py syncdb
 

@@ -10,7 +10,7 @@ runtime: python-2.7.3
 framework: django
 
 # This path is relative to your project root (the directory gondor.yml lives in.)
-requirements_file: requirements.txt
+requirements_file: requirements/prod.txt
 
 # Commands to be executed during deployment. These can handle migrations or
 # moving static files into place. Accepts same parameters as gondor run.
