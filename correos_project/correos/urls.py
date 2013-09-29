@@ -5,6 +5,7 @@ from . import views
 
 router = routers.DefaultRouter()
 router.register(r'domain', views.DomainViewSet)
+router.register(r'user', views.RecipientViewSet)
 router.register(r'email', views.EmailViewSet)
 
 urlpatterns = patterns('',

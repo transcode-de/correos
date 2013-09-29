@@ -1,8 +1,8 @@
 from django.views.generic import TemplateView
 from rest_framework import viewsets
 
-from .models import Domain, Email
 from . import serializers
+from .models import Domain, Email, Recipient
 
 
 class InboxView(TemplateView):
@@ -14,7 +14,14 @@ class DomainViewSet(viewsets.ModelViewSet):
     serializer_class = serializers.DomainSerializer
 
 
+class RecipientViewSet(viewsets.ModelViewSet):
+    queryset = Recipient.objects.all()
+    serializer_class = serializers.RecipientSerializer
+    filter_fields = ('domain__name',)
+
+
 class EmailViewSet(viewsets.ModelViewSet):
     queryset = Email.objects.all()
     serializer_class = serializers.EmailSerializer
-    filter_fields = ('sender', 'recipient', 'domain')
+    filter_fields = ('sender', 'recipient__email')
+    paginate_by = 10

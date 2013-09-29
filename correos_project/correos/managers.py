@@ -7,10 +7,12 @@ from dateutil.parser import parse
 
 class EmailManager(models.Manager):
     def create_from_message(self, mailfrom, rcpttos, data):
+        from .models import Recipient
         message = message_from_string(data)
         emails = []
         for rcptto in rcpttos:
-            email = self.model(sender=mailfrom, recipient=rcptto)
+            recipient, created = Recipient.objects.get_or_create(email=rcptto)
+            email = self.model(sender=mailfrom, recipient=recipient)
             email.date = message.get('Date')
             if email.date is not None:
                 email.date = parse(email.date)
