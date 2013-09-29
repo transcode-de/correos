@@ -34,7 +34,8 @@
 
     <div class="grey-box full-height email-select col-md-4">
       <!-- ko if: emails().length > 0 -->
-      <ul class="nav nav-pills nav-stacked" data-bind="foreach: emails()">
+      <input type="text" class="form-control filter" data-bind="value: emailFilter, valueUpdate:'afterkeydown'" placeholder="{% trans 'Filter' %}">
+      <ul class="nav nav-pills nav-stacked" data-bind="foreach: filteredEmails()">
         <li data-bind="css: {active: $parent.email().uuid == uuid}">
           <a href="#" data-bind="click: $parent.email">
             <span class="sender" data-bind="text: sender"></span>

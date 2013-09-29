@@ -18,6 +18,8 @@ function MainViewModel() {
   self.user = ko.observable();
   self.email = ko.observable(emptyEmail);
 
+  self.emailFilter = ko.observable('');
+
   setInterval(function() {
     self.fetchUsers();
     self.fetchEmails({prepend: true});
@@ -73,6 +75,18 @@ function MainViewModel() {
   };
   self.user.subscribe(self.fetchEmails);
 
+  self.filteredEmails = ko.computed(function() {
+    var filter = self.emailFilter().toLowerCase();
+    return ko.utils.arrayFilter(this.emails(), function(email) {
+      if (!filter) {
+        return true;
+      }
+      return _.some(['body', 'subject', 'sender'], function(key) {
+        return email[key].toLowerCase().indexOf(filter) >= 0;
+      });
+    });
+  }, self);
+
   self.raw = ko.computed(function() {
     var email = self.email();
     if (email.header) {
@@ -95,4 +109,3 @@ $(function() {
   $('#reload-domains').tooltip({'placement': 'bottom'});
   email_display_format();
 });
-
