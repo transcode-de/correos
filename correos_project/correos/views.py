@@ -1,3 +1,4 @@
+from dateutil.parser import parse
 from django.views.generic import TemplateView
 from rest_framework import viewsets
 
@@ -25,9 +26,17 @@ class RecipientViewSet(viewsets.ModelViewSet):
 
 
 class EmailViewSet(viewsets.ModelViewSet):
-    queryset = Email.objects.all()
+    model = Email
     serializer_class = serializers.EmailSerializer
     filter_fields = ('sender', 'recipient__email')
     paginate_by = 20
     paginate_by_param = 'page_size'
     max_paginate_by = 100
+
+    def get_queryset(self):
+        """Optionally filters the emails using the `after` query parameter."""
+        qs = Email.objects.all()
+        after = self.request.QUERY_PARAMS.get('after', None)
+        if after is not None:
+            qs = qs.filter(date__gt=parse(after))
+        return qs
