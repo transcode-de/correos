@@ -8,9 +8,9 @@ body, html {
 }
 
 h2 {
-	font-size: 17px;
-	font-weight: bold;
-	margin-top: 0.2em;
+    font-size: 17px;
+    font-weight: bold;
+    margin-top: 0.2em;
 }
 
 .grey-box {
@@ -23,15 +23,15 @@ h2 {
 }
 
 .navbar {
-	margin-bottom: 0;
+    margin-bottom: 0;
 }
 
 .navbar-brand {
-	border-right: 1px solid #E7E7E7;
+    border-right: 1px solid #E7E7E7;
 }
 
 .domain-select {
-	min-width: 200px;
+    min-width: 200px;
 }
 
 .postbox-select {
@@ -43,35 +43,35 @@ h2 {
 }
 
 .postbox-select, .email-select, .email-detail {
-	padding-left: 1em;
-	padding-top: 0.5em;
-	overflow-y: scroll;
-	overflow-x: hidden;
+    padding-left: 1em;
+    padding-top: 0.5em;
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
 
 .email-select .subject, .email-detail .subject {
-	color: #000;
-	display: block;
+    color: #000;
+    display: block;
 }
 
 .email-select .active .subject {
-	color: #FFF;
+    color: #FFF;
 }
 
 .email-select .sender {
-	font-weight: bold;
-	color: #000;
+    font-weight: bold;
+    color: #000;
 }
 
 .email-select .date {
-	color: #428bca;
+    color: #428bca;
 }
 
 .email-select .preview {
     display: block;
     color: #888;
     max-height: 3em;
-	overflow-y: hidden;
+    overflow-y: hidden;
 }
 
 .email-select .active .sender, .email-select .active .date {
@@ -100,13 +100,13 @@ h2 {
 }
 
 .email-detail .subject {
-	margin-bottom: 1em;
+    margin-bottom: 1em;
 }
 
 .mail-format {
-	margin-top: 1em;
+    margin-top: 1em;
 }
 
 .panel-group {
-	margin-top: 1em;
+    margin-top: 1em;
 }
