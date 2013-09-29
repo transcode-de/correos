@@ -32,14 +32,20 @@ function MainViewModel() {
     //$.get('/api/user/?domain=' + self.domain.name, function(users) {
       //self.users(users);
       self.users([
-        { name: 'klaus@example.net', countMails: 10 },
-        { name: 'peter@example.net', countMails: 15 },
-        { name: 'gudrun@example.net', countMails: 0 },
-        { name: 'magda@example.net', countMails: 5 },
-        { name: 'guido@example.net', countMails: 8 },
+        { name: 'cindy@example.com', countMails: 10 },
+        { name: 'bob@example.com', countMails: 15 },
       ]);
     //});
+    self.fetchEmails();
   }, 1000);
+
+  self.fetchEmails = function() {
+    if (self.user()) {
+      $.get('/api/email/?recipient=' + self.user(), self.emails);
+    } else {
+      $.get('/api/email/', self.emails);
+    }
+  }
 
   self.activate = function(user) {
     self.user(user.name);
