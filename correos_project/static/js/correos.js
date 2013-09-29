@@ -41,12 +41,12 @@ function MainViewModel() {
     } else {
       $.get('/api/email/', self.emails);
     }
-  }
+  };
 
   self.activateUser = function(user) {
     self.email({});
     self.user(user.name);
-  }
+  };
 }
 ko.applyBindings(new MainViewModel());
 
