@@ -38,15 +38,26 @@ function MainViewModel() {
   self.fetchDomains();
 
   self.fetchUsers = function() {
-    $.get('/api/user/?domain__name=' + self.domain(), self.users);
+    $.get('/api/user/?domain__name=' + self.domain(), function(users) {
+      self.users(_.map(users, function(user) {
+        user.name = user.email.split('@')[0];
+        return user;
+      }));
+    });
   };
   self.domain.subscribe(self.fetchUsers);
+  self.domain.subscribe(function() {
+    self.emails([]);
+  });
 
   self.activateUser = function(user) {
     self.email(emtpyEmail);
     self.user(user.email);
   };
   self.user.subscribe(self.fetchEmails);
+  self.user.subscribe(function() {
+    self.email(emptyEmail);
+  });
 
   self.raw = ko.computed(function() {
     var email = self.email();
