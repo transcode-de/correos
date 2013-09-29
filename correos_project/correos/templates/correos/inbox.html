@@ -54,99 +54,98 @@
     </nav>
     <!-- /domains -->
 
-      <!-- postboxes -->
-      <div class="grey-box full-height postbox-select col-md-2">
-        <ul class="nav nav-pills nav-stacked" data-bind="foreach: users()">
-          <li data-bind="css: {active: $parent.user() == name}">
-            <a href="#" data-bind="click: $parent.activateUser">
-              <span class="badge pull-right" data-bind="text: countMails"></span>
-              <span data-bind="text: name"></span>
-            </a>
-          </li>
-        </ul>
-        <p data-bind="visible: !users().length">{% trans 'Please choose a domain.' %}
+    <!-- postboxes -->
+    <div class="grey-box full-height postbox-select col-md-2">
+      <ul class="nav nav-pills nav-stacked" data-bind="foreach: users()">
+        <li data-bind="css: {active: $parent.user() == name}">
+          <a href="#" data-bind="click: $parent.activateUser">
+            <span class="badge pull-right" data-bind="text: countMails"></span>
+            <span data-bind="text: name"></span>
+          </a>
+        </li>
+      </ul>
+      <p data-bind="visible: !users().length">{% trans 'Please choose a domain.' %}
+    </div>
+    <!-- /postboxes -->
+
+    <!-- email-list -->
+    <div class="grey-box full-height email-select col-md-4">
+      <!-- ko if: emails().length > 0 -->
+      <ul class="nav nav-pills nav-stacked" data-bind="foreach: emails()">
+        <li data-bind="css: {active: $parent.email().uuid == uuid}">
+          <a href="#" data-bind="click: $parent.email">
+            <span class="subject" data-bind="text: subject"></span>
+            <span class="sender" data-bind="text: sender"></span>
+            <span class="date" data-bind="text: date"></span>
+          </a>
+        </li>
+      </ul>
+      <!-- /ko -->
+      <p data-bind="visible: !emails().length">{% trans 'Please choose a postbox.' %}
+    </div>
+    <!-- /email-list -->
+
+    <!-- email-detail -->
+    <div class="grey-box full-height email-detail col-md-6">
+
+      <div class="row">
+        <div class="col-md-1">
+          <span class="sender">{% trans 'From' %}:</span>
+          <span class="recipient">{% trans 'To'%}:</span>
+        </div>
+
+        <div class="col-md-8">
+          <span class="sender">admin@example.co.uk</span>
+          <span class="recipient">meier@example.com</span>
+        </div>
+
+        <div class="col-md-3">
+          <span class="date pull-right">29. Sep 2013, 2pm</span>
+          <div class="btn-group pull-right" data-toggle="buttons">
+            <label class="btn btn-default btn-sm display_type_change active">
+              <input type="radio" class="display_type_change" name="email_display_type" data-target="#plain-text"> Plain Text
+            </label>
+            <label class="btn btn-default btn-sm display_type_change">
+              <input type="radio" class="display_type_change" name="email_display_type" data-target="#html"> HTML
+            </label>
+            <label class="btn btn-default btn-sm display_type_change">
+              <input type="radio" name="email_display_type" data-target="#raw"> Raw
+            </label>
+          </div>
+        </div>
       </div>
-      <!-- /postboxes -->
-
-      <!-- email-list -->
-      <div class="grey-box full-height email-select col-md-4">
-        <!-- ko if: emails().length > 0 -->
-        <ul class="nav nav-pills nav-stacked" data-bind="foreach: emails()">
-          <li data-bind="css: {active: $parent.email().uuid == uuid}">
-            <a href="#" data-bind="click: $parent.email">
-              <span class="subject" data-bind="text: subject"></span>
-              <span class="sender" data-bind="text: sender"></span>
-              <span class="date" data-bind="text: date"></span>
-            </a>
-          </li>
-        </ul>
-        <!-- /ko -->
-        <p data-bind="visible: !emails().length">{% trans 'Please choose a postbox.' %}
+      <span class="subject">{% trans 'Subject' %}: Wellcome at example.co.uk!</span>
+      <div class="mail-format" id="plain-text">
+        Hi,<br />
+        <br />
+        we want to verify that you are indeed "Herr Meier".<br />
+        <br />
+        If so, please click the following Link or copy it into your Browsers Addressbar:<br />
+        <br />
+        <a href="https://example.co.uk/verifyEmail/23hjdsgfh08324nkjysdhjkjkh">https://example.co.uk/verifyEmail/23hjdsgfh08324nkjysdhjkjkh</a> <br />
+        <br />
+        If you're not "HerrMeier" you can ignore this email.<br />
+        <br />
+        With kind regards,<br />
+        <br />
+        Your example.co.uk-Team
       </div>
-      <!-- /email-list -->
+      <div class="mail-format" id="html" style="display: none;">
+        <p>Hi,</p>
 
-      <!-- email-detail -->
-      <div class="grey-box full-height email-detail col-md-6">
-        <h2>{% trans 'E-Mail' %}</h2>
+        <p>we want to verify that you are indeed "Herr Meier".</p>
 
-        <div class="row">
-          <div class="col-md-1">
-            <span class="sender">{% trans 'From' %}:</span>
-            <span class="recipient">{% trans 'To'%}:</span>
-          </div>
+        <p>If so, please click the following Link or copy it into your Browsers Addressbar:</p>
 
-          <div class="col-md-8">
-            <span class="sender">admin@example.co.uk</span>
-            <span class="recipient">meier@example.com</span>
-          </div>
+        <p><a href="https://example.co.uk/verifyEmail/23hjdsgfh08324nkjysdhjkjkh">https://example.co.uk/verifyEmail/23hjdsgfh08324nkjysdhjkjkh</a></p>
 
-          <div class="col-md-3">
-            <span class="date pull-right">29. Sep 2013, 2pm</span>
-            <div class="btn-group pull-right" data-toggle="buttons">
-              <label class="btn btn-default btn-sm display_type_change active">
-                <input type="radio" class="display_type_change" name="email_display_type" data-target="#plain-text"> Plain Text
-              </label>
-              <label class="btn btn-default btn-sm display_type_change">
-                <input type="radio" class="display_type_change" name="email_display_type" data-target="#html"> HTML
-              </label>
-              <label class="btn btn-default btn-sm display_type_change">
-                <input type="radio" name="email_display_type" data-target="#raw"> Raw
-              </label>
-            </div>
-          </div>
-        </div>
-        <span class="subject">{% trans 'Subject' %}: Wellcome at example.co.uk!</span>
-        <div class="mail-format" id="plain-text">
-          Hi,<br />
-          <br />
-          we want to verify that you are indeed "Herr Meier".<br />
-          <br />
-          If so, please click the following Link or copy it into your Browsers Addressbar:<br />
-          <br />
-          <a href="https://example.co.uk/verifyEmail/23hjdsgfh08324nkjysdhjkjkh">https://example.co.uk/verifyEmail/23hjdsgfh08324nkjysdhjkjkh</a> <br />
-          <br />
-          If you're not "HerrMeier" you can ignore this email.<br />
-          <br />
-          With kind regards,<br />
-          <br />
-          Your example.co.uk-Team
-        </div>
-        <div class="mail-format" id="html" style="display: none;">
-          <p>Hi,</p>
+        <p>If you're not "HerrMeier" you can ignore this email.</p>
 
-          <p>we want to verify that you are indeed "Herr Meier".</p>
-
-          <p>If so, please click the following Link or copy it into your Browsers Addressbar:</p>
-
-          <p><a href="https://example.co.uk/verifyEmail/23hjdsgfh08324nkjysdhjkjkh">https://example.co.uk/verifyEmail/23hjdsgfh08324nkjysdhjkjkh</a></p>
-
-          <p>If you're not "HerrMeier" you can ignore this email.</p>
-
-          <p>With kind regards,</p>
-          <p>Your example.co.uk-Team</p>
-        </div>
-        <pre class="mail-format" id="raw" style="display: none;">
-          <code>
+        <p>With kind regards,</p>
+        <p>Your example.co.uk-Team</p>
+      </div>
+      <pre class="mail-format" id="raw" style="display: none;">
+        <code>
 Return-path: &lt;noreply@example.co.uk&gt;
 Envelope-to: &lt;meier@example.com&gt;
 Received: from smtp1.example.co.uk ([127.0.0.0]:43818)
@@ -180,10 +179,10 @@ X-Processed-Server: mail1.example.com
 
 &lt;p&gt;With kind regards,&lt;/p&gt;
 &lt;p&gt;Your example.co.uk-Team&lt;/p&gt;
-          </code>
-        </pre>
-      </div>
-      <!-- /email-detail -->
+        </code>
+      </pre>
+    </div>
+    <!-- /email-detail -->
 
     <!-- JavaScript Files -->
     <script src="{% static 'js/jquery.js' %}"></script>
