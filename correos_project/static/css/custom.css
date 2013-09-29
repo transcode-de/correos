@@ -1,5 +1,16 @@
-body, html, .full-height {
+body, html {
   height: 100%;
+  overflow-y: hidden;
+}
+
+.full-height {
+  height: 95%;
+}
+
+h2 {
+	font-size: 17px;
+	font-weight: bold;
+	margin-top: 0.2em;
 }
 
 .grey-box {
@@ -17,4 +28,11 @@ body, html, .full-height {
 
 .domain-select {
 	min-width: 200px;
+}
+
+.postbox-select, .email-select, .email-detail {
+	padding-left: 1em;
+	padding-top: 0.5em;
+	overflow-y: scroll;
+	overflow-x: hidden;
 }
