@@ -1,60 +1,23 @@
+{% extends 'base.html' %}
 {% load i18n %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="Markus Zapke-Gründemann, Max Brauer, Stephan Hoyer">
-    <!--link rel="shortcut icon" href="static/img/favicon.ico" -->
 
-    <title>{% trans 'correos' %}</title>
+{% block page-navbar %}
+<form class="navbar-form navbar-left" role="search">
+  <div class="form-group">
+    <label class="sr-only" for="domain">
+      {% trans 'Domain' %}
+    </label>
+    <select name="domain" class="form-control input-sm domain-select"
+      data-bind="options: domains, value: $root.domain, optionsValue:
+        'name', optionsText: 'name'">
+    </select>
+  </div>
+  <button class="btn btn-sm btn-success" id="reload-domains" data-toggle="tooltip" title="{% trans 'Reload Domains'%}" data-bind="click: $root.fetchDomains"><i class="glyphicon glyphicon-repeat"></i></button>
+</form>
+{% endblock %}
 
-    <!-- styles -->
-    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
-    <link href="{% static 'css/custom.css' %}" rel="stylesheet">
-    <!-- /styles -->
-
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      {% block ie-lt-9 %}
-      <script src="{% static 'js/html5shiv.js' %}"></script>
-      <script src="{% static 'js/respond.min.js' %}"></script>
-      {% endblock %}
-    <![endif]-->
-  </head>
-
-  <body>
-
-    <!-- domains -->
-    <nav class="navbar navbar-default" role="navigation">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="#">correos</a>
-      </div>
-
-      <form class="navbar-form navbar-left" role="search">
-        <div class="form-group">
-          <label class="sr-only" for="domain">
-            {% trans 'Domain' %}
-          </label>
-          <select name="domain" class="form-control input-sm domain-select" 
-            data-bind="options: domains, value: $root.domain, optionsValue:
-            'name', optionsText: 'name'">
-          </select>
-        </div>
-        <button class="btn btn-sm btn-success" id="reload-domains" data-toggle="tooltip" title="{% trans 'Reload Domains'%}" data-bind="click: $root.fetchDomains"><i class="glyphicon glyphicon-repeat"></i></button>
-      </form>
-    </nav>
-    <!-- /domains -->
-
-    <!-- postboxes -->
+{% block content %}
     <div class="grey-box full-height postbox-select col-md-2">
       <ul class="nav nav-pills nav-stacked" data-bind="foreach: users()">
         <li data-bind="css: {active: $parent.user() == email}">
@@ -66,9 +29,7 @@
       </ul>
       <p data-bind="visible: !users().length">{% trans 'Please choose a domain.' %}
     </div>
-    <!-- /postboxes -->
 
-    <!-- email-list -->
     <div class="grey-box full-height email-select col-md-4">
       <!-- ko if: emails().length > 0 -->
       <ul class="nav nav-pills nav-stacked" data-bind="foreach: emails()">
@@ -83,9 +44,7 @@
       <!-- /ko -->
       <p data-bind="visible: !emails().length">{% trans 'Please choose a postbox.' %}
     </div>
-    <!-- /email-list -->
 
-    <!-- email-detail -->
     <div class="grey-box full-height email-detail col-md-6">
       <h2 class="subject" data-bind="text: email().subject"></h2>
 
@@ -119,14 +78,9 @@
       <div class="mail-format" id="html" style="display: none;" data-bind="html: email().body"></div>
       <pre class="mail-format" id="raw" style="display: none;" data-bind="text: raw()"></pre>
     </div>
-    <!-- JavaScript Files -->
-    <script src="{% static 'js/jquery.js' %}"></script>
-    <script src="{% static 'js/jquery.nicescroll.min.js' %}"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/2.1.0/lodash.backbone.js"></script>
-    <script src="{% static 'js/bootstrap.min.js' %}"></script>
-    <script src="{% static 'js/knockout-2.3.0.js' %}"></script>
-    <script src="{% static 'js/correos.js' %}"></script>
-    <!-- /JavaScript Files -->
+{% endblock %}
 
-  </body>
-</html>
+{% block js %}
+{{ block.super }}
+<script src="{% static 'js/correos.js' %}"></script>
+{% endblock %}
