@@ -30,6 +30,14 @@ h2 {
 	min-width: 200px;
 }
 
+.postbox-select {
+    background-color: #F3F3F3;
+}
+
+.postbox-select li:hover a{
+    background-color: #DDD;
+}
+
 .postbox-select, .email-select, .email-detail {
 	padding-left: 1em;
 	padding-top: 0.5em;
@@ -39,7 +47,6 @@ h2 {
 
 .email-select .subject, .email-detail .subject {
 	color: #000;
-	font-weight: bold;
 	display: block;
 }
 
@@ -47,28 +54,32 @@ h2 {
 	color: #FFF;
 }
 
-.email-select .sender, .email-select .date {
-	color: #5E5E5E;
+.email-select .sender {
+	font-weight: bold;
+	color: #000;
 }
 
 .email-select .date {
 	color: #428bca;
 }
 
+.email-select .preview {
+    color: #888;
+}
+
 .email-select .active .sender, .email-select .active .date {
 	color: #F8F8F8;
 }
+.email-select .active .preview {
+	color: #a1c5e4;
+}
 
-.sender, .recipient {
+.sender, .recipient, .email-detail .date {
 	font-weight: bold;
 }
 
 .email-detail .sender, .email-detail .recipient {
 	display: block;
-}
-
-.email-detail .date {
-	font-size: 110%
 }
 
 .email-detail .subject {

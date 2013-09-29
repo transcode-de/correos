@@ -37,9 +37,10 @@
       <ul class="nav nav-pills nav-stacked" data-bind="foreach: emails()">
         <li data-bind="css: {active: $parent.email().uuid == uuid}">
           <a href="#" data-bind="click: $parent.email">
-            <span class="subject" data-bind="text: subject"></span>
-            <span class="date pull-right" data-bind="text: fuzzyDate"></span>
             <span class="sender" data-bind="text: sender"></span>
+            <span class="date pull-right" data-bind="text: fuzzyDate"></span>
+            <span class="subject" data-bind="text: subject"></span>
+            <span class="preview" data-bind="text: preview"></span>
           </a>
         </li>
       </ul>
@@ -53,17 +54,18 @@
 
         <div class="row">
           <div class="col-md-1">
+            <span class="date">{% trans 'Date'%}:</span>
             <span class="sender">{% trans 'From' %}:</span>
             <span class="recipient">{% trans 'To'%}:</span>
           </div>
 
           <div class="col-md-7">
+            <span class="date" data-bind="text: email().date"></span>
             <span class="sender" data-bind="text: email().sender"></span>
             <span class="recipient" data-bind="text: email().header.To"></span>
           </div>
 
           <div class="col-md-4">
-            <span class="date pull-right" data-bind="text: email().date"></span>
             <div class="btn-group pull-right" data-toggle="buttons">
               <label class="btn btn-default btn-sm display_type_change active">
                 <input type="radio" class="display_type_change" name="email_display_type" data-target="#plain-text"> Plain Text

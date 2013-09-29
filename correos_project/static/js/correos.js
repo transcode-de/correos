@@ -1,3 +1,7 @@
+function stripHTML(html) {
+  return html.replace(/<\/?([a-z][a-z0-9]*)\b[^>]*>?/gi, '');
+}
+
 var emptyEmail = {
   header: {},
   body: ''
@@ -26,6 +30,7 @@ function MainViewModel() {
           email.header = $.parseJSON(email.header);
           email.fuzzyDate = moment.utc(email.date).local().fromNow();
           email.date = moment.utc(email.date).local().format('YYYY-MM-DD\THH:mm:ss');
+          email.preview = stripHTML(email.body).slice(0, 150);
           return email;
         }));
       });
@@ -76,3 +81,4 @@ $(function() {
 	$('#reload-domains').tooltip({'placement': 'bottom'});
 	email_display_format();
 });
+
