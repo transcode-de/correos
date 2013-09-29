@@ -7,7 +7,7 @@ from .managers import EmailManager
 
 class Domain(models.Model):
     uuid = UUIDField(auto=True, primary_key=True)
-    name = models.CharField(max_length=200, unique=True)
+    name = models.CharField(max_length=255, unique=True)
 
     def __unicode__(self):
         return self.name
