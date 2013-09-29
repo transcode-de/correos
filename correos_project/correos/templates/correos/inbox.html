@@ -81,8 +81,8 @@
             </div>
           </div>
         </div>
-        <div class="mail-format" id="plain-text" data-bind="text: email().body"></div>
-        <div class="mail-format" id="html" style="display: none;" data-bind="html: email().body"></div>
+        <div class="mail-format" id="plain-text" data-bind="html: email().textAsHtml"></div>
+        <div class="mail-format" id="html" style="display: none;" data-bind="html: email().html"></div>
         <pre class="mail-format" id="raw" style="display: none;" data-bind="text: raw()"></pre>
       </div>
       <div data-bind="visible: !email().recipient" class="text-center email-empty">

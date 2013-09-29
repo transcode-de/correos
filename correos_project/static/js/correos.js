@@ -38,6 +38,7 @@ function MainViewModel() {
           email.fuzzyDate = moment.utc(email.date).local().fromNow();
           email.formatedDate = moment.utc(email.date).local().format('YYYY-MM-DD\THH:mm:ss');
           email.preview = stripHTML(email.body);
+          email.textAsHtml = '<p>' + email.body.replace(/\n{1,2}/, '</p><p>') + '</p>';
           return email;
         });
         if (newEmails.length) {
@@ -60,6 +61,7 @@ function MainViewModel() {
     self.fetchUsers();
     self.user(null);
     self.emails([]);
+    self.email(emptyEmail);
   });
 
   self.fetchUsers = function() {
