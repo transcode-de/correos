@@ -1,12 +1,16 @@
+//util function to strip HTML form strings
 function stripHTML(html) {
   return html.replace(/<\/?([a-z][a-z0-9]*)\b[^>]*>?/gi, '');
 }
 
+//placeholder mail if no mail is selected
 var emptyEmail = {
   header: {},
   body: ''
 };
 
+//main view model
+//TODO split to seperate view models for user/mail
 function MainViewModel() {
   self = this;
 
@@ -20,11 +24,15 @@ function MainViewModel() {
 
   self.emailFilter = ko.observable('');
 
+  //update poll
   setInterval(function() {
     self.fetchUsers();
     self.fetchEmails({prepend: true});
   }, 2000);
 
+  //fetches mails of currently seleced user
+  //if options.prepend is set, only the mails prior the last mail where
+  //fetched.
   self.fetchEmails = function(options) {
     if (self.user()) {
       var existingEmails = self.emails();
@@ -55,6 +63,7 @@ function MainViewModel() {
     }
   };
 
+  //fetches all domains
   self.fetchDomains = function() {
     $.get('/api/domain/', self.domains);
   };
@@ -66,6 +75,7 @@ function MainViewModel() {
     self.email(emptyEmail);
   });
 
+  //fetches all users
   self.fetchUsers = function() {
     $.get('/api/user/?domain__name=' + self.domain(), self.users);
   };
@@ -75,6 +85,7 @@ function MainViewModel() {
   };
   self.user.subscribe(self.fetchEmails);
 
+  //property to filter the mails by input value
   self.filteredEmails = ko.computed(function() {
     var filter = self.emailFilter().toLowerCase();
     return ko.utils.arrayFilter(this.emails(), function(email) {
@@ -87,6 +98,7 @@ function MainViewModel() {
     });
   }, self);
 
+  //helper function to get raw version of currently seleced mail
   self.raw = ko.computed(function() {
     var email = self.email();
     if (email.header) {
