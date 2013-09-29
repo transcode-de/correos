@@ -50,7 +50,15 @@ function MainViewModel() {
 }
 ko.applyBindings(new MainViewModel());
 
+function email_display_format() {
+	$('.display_type_change').on('click', function(){
+		$('.mail-format').hide();
+		$($(this).find('input').data('target')).fadeIn();
+	});
+}
+
 $(function() {
 	$('.postbox-select, .email-select, .email-detail').niceScroll();
 	$('#reload-domains').tooltip({'placement': 'bottom'});
+	email_display_format();
 });

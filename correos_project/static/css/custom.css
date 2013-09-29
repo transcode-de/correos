@@ -37,7 +37,7 @@ h2 {
 	overflow-x: hidden;
 }
 
-.email-select .subject {
+.email-select .subject, .email-detail .subject {
 	color: #000;
 	font-weight: bold;
 	font-size: 130%;
@@ -56,6 +56,18 @@ h2 {
 	color: #F8F8F8;
 }
 
-.email-select .sender {
+.sender, .recipient {
 	font-weight: bold;
+}
+
+.email-detail .sender, .email-detail .recipient {
+	display: block;
+}
+
+.email-detail .date {
+	font-size: 110%
+}
+
+.email-detail .subject {
+	margin-bottom: 1em;
 }
