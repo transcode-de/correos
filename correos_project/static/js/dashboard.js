@@ -1,7 +1,7 @@
 function MainViewModel() {
   self = this;
   self.emails = ko.observableArray();
-  self.next_url = ko.observable('/api/email/');
+  self.next_url = ko.observable('/api/email/?page_size=7');
   self.previous_url = ko.observable();
 
   self.fetchEmails = function(url) {
