@@ -12,20 +12,39 @@ function Email(data) {
 function MainViewModel() {
   self = this;
 
-  self.domain = ko.observable({ name: 'None' });
   self.domains = ko.observableArray([]);
+  self.users = ko.observableArray([]);
+  self.emails = ko.observableArray([]);
+
+  self.domain = ko.observable();
+  self.user = ko.observable();
+  self.email = ko.observable();
 
   setInterval(function() {
     //$.get('/api/domain/', function(domains) {
+      //self.domains(domains);
       self.domains([
         { name: 'example.net' },
         { name: 'example.org' },
         { name: 'example.foo' }
       ]);
     //});
+    //$.get('/api/user/?domain=' + self.domain.name, function(users) {
+      //self.users(users);
+      self.users([
+        { name: 'klaus@example.net', countMails: 10 },
+        { name: 'peter@example.net', countMails: 15 },
+        { name: 'gudrun@example.net', countMails: 0 },
+        { name: 'magda@example.net', countMails: 5 },
+        { name: 'guido@example.net', countMails: 8 },
+      ]);
+    //});
   }, 1000);
-}
 
+  self.activate = function(user) {
+    self.user(user.name);
+  }
+}
 ko.applyBindings(new MainViewModel());
 
 $(function() {

@@ -57,41 +57,11 @@
       <!-- postboxes -->
       <div class="grey-box full-height postbox-select col-md-2">
         <h2>{% trans 'Postboxes' %}</h2>
-        <ul class="nav nav-pills nav-stacked">
-          <li>
-            <a href="#">
-              <span class="badge pull-right">7</span>
-              klaus@example.com
-            </a>
-          </li>
-          <li class="active">
-            <a href="#">
-              <span class="badge pull-right">4</span>
-              meier@example.com
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <span class="badge pull-right">19</span>
-              lothar@example.com
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <span class="badge pull-right">2</span>
-              foo@example.com
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <span class="badge pull-right">21</span>
-              bar@example.com
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <span class="badge pull-right">43</span>
-              bazz@example.com
+        <ul class="nav nav-pills nav-stacked" data-bind="foreach: users()">
+          <li data-bind="css: {active: $parent.user() == name}">
+            <a href="#" data-bind="click: $parent.activate">
+              <span class="badge pull-right" data-bind="text: countMails"></span>
+              <span data-bind="text: name"></span>
             </a>
           </li>
         </ul>
