@@ -4,6 +4,8 @@ Correos
 
 A local mail server and client to be used as a development tool.
 
+A demo is runnging at http://kg358.gondor.co/
+
 Quickstart
 ==========
 
