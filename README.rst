@@ -42,3 +42,19 @@ REST API
 
 Beside the web interface there is a REST API which makes all the data
 available too. The REST API entry point is at ``/api/``.
+
+Documentation
+=============
+
+To view and build the documentation you first have install our documentation
+dependencies::
+
+    $ pip install -r requirements/docs.txt
+
+After that you can go into the docs directory and build the documentation::
+
+    $ cd docs/
+    docs/ $ make html
+
+Finally you can find the documentation in the build directory.
+
