@@ -15,6 +15,8 @@ from datetime import date
 import sys
 import os
 
+import alabaster
+
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
@@ -33,6 +35,7 @@ extensions = [
     'sphinx.ext.todo',
     'sphinx.ext.ifconfig',
     'sphinx.ext.viewcode',
+    'alabaster',
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -113,15 +116,29 @@ todo_include_todos = True
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
-html_theme = 'sphinx_rtd_theme'
+html_theme = 'alabaster'
 
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
 # documentation.
-#html_theme_options = {}
+html_theme_options = {
+    # Relative path (from $PROJECT/_static/) to a logo image, which will appear
+    # in the upper left corner above the name of the project.
+    # 'logo': 'logo.png',
+    'logo_name': True,
+    'description': '',
+    'github_user': 'transcode-de',
+    'github_repo': 'correos',
+    'github_button': True,
+    'github_banner': False,
+    'travis_button': False,
+    'extra_nav_links': {},
+    'analytics_id': '',
+    'show_related': False,
+}
 
 # Add any paths that contain custom themes here, relative to this directory.
-#html_theme_path = []
+html_theme_path = [alabaster.get_path()]
 
 # The name for this set of Sphinx documents.
 # "<project> v<release> documentation" by default.
