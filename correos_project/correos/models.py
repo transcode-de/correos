@@ -9,6 +9,7 @@ class Domain(models.Model):
     uuid = UUIDField(auto=True, primary_key=True)
     name = models.CharField(max_length=255, unique=True)
 
+    # equivalent to __str__() in Python 3
     def __unicode__(self):
         return self.name
 
@@ -22,12 +23,14 @@ class Recipient(models.Model):
     class Meta:
         ordering = ['domain', 'email']
 
+    # equivalent to __str__() in Python 3
     def __unicode__(self):
         return self.email
 
     def save(self, *args, **kwargs):
         if not self.uuid:
             domain = '.'.join(self.email.split('@')[1].split('.')[-2:])
+            # Checks if Domain already exists, if not, creates it
             self.domain, created = Domain.objects.get_or_create(name=domain)
         super(Recipient, self).save(*args, **kwargs)
 
@@ -49,6 +52,7 @@ class Email(models.Model):
         ordering = ['-date']
         unique_together = ('message_id', 'recipient')
 
+    # equivalent to __str__() in Python 3
     def __unicode__(self):
         return '%s for %s' % (self.message_id, self.recipient)
 

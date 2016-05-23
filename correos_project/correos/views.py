@@ -34,9 +34,21 @@ class EmailViewSet(viewsets.ModelViewSet):
     max_paginate_by = 100
 
     def get_queryset(self):
-        """Optionally filters the emails using the `after` query parameter."""
+        # Optionally filters the emails using the `after` query parameter.
         qs = Email.objects.all()
         after = self.request.QUERY_PARAMS.get('after', None)
         if after is not None:
             qs = qs.filter(date__gt=parse(after))
         return qs
+
+
+'''
+viewsets from RESTframework
+* almost same as View classes, but provide operations such as read or update,
+    not method handlers such as get or put, bound to them when instantiated
+    into set of views by using a Router class
+* Router class = handles URLconf defining, viewsets must be registered with a
+    router, creating a DefaultRouter entity
+* ModelViewSet = viewsets class providing actions like list, create, retrieve,
+    update and destroy, adding own ones is possible
+'''

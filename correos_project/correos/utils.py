@@ -4,7 +4,7 @@ from django.conf import settings
 
 
 def get_smtp_host():
-    """Returns the hostname to use fpr SMTP."""
+    # Returns the hostname to use for SMTP.
     if settings.CORREOS_USE_PUBLIC_IP:
         host = socket.gethostbyname(socket.gethostname())
     else:

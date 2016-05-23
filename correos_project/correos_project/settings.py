@@ -1,26 +1,39 @@
 # Django settings for correos_project project.
+
 import os
 
+# Add path to project directory
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
+# Enables debug mode, error page
 DEBUG = True
+
+# Deprecated since Django v1.8
 TEMPLATE_DEBUG = DEBUG
 
+# Add person who gets code error notification in case: DEBUG=False
 ADMINS = (
     # ('Your Name', 'your_email@example.com'),
 )
 
+# Add who gets broken link notific. when BrokenLinkEmailsMiddelware is enabled
 MANAGERS = ADMINS
 
+# Add settings for all used databases
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': os.path.join(BASE_DIR, 'correos.db'),                      # Or path to database file if using sqlite3.
+        # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
+        'ENGINE': 'django.db.backends.sqlite3',
+        # Or path to database file if using sqlite3.
+        'NAME': os.path.join(BASE_DIR, 'correos.db'),
         # The following settings are not used with sqlite3:
         'USER': '',
         'PASSWORD': '',
-        'HOST': '',                      # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
-        'PORT': '',                      # Set to empty string for default.
+        # Empty for localhost through domain sockets or
+        # '127.0.0.1' for localhost through TCP.
+        'HOST': '',
+        # Set to empty string for default.
+        'PORT': '',
     }
 }
 
@@ -38,6 +51,7 @@ TIME_ZONE = 'Europe/Berlin'
 # http://www.i18nguy.com/unicode/language-identifiers.html
 LANGUAGE_CODE = 'en-us'
 
+# Add id of current site in django_site database table
 SITE_ID = 1
 
 # If you set this to False, Django will make some optimizations so as not
@@ -83,32 +97,39 @@ STATICFILES_DIRS = (
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-#    'django.contrib.staticfiles.finders.DefaultStorageFinder',
+    # 'django.contrib.staticfiles.finders.DefaultStorageFinder',
 )
 
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = '(xe@&7v28m=%l@&60gt4%@p8t0s^csxod9ooxr2%6z5x_gaj3u'
 
 # List of callables that know how to import templates from various sources.
+# Deprecated since Django v1.8
+# (set 'loaders' option in OPTIONS of DjangoTemplates backend instead)
 TEMPLATE_LOADERS = (
     'django.template.loaders.app_directories.Loader',
 )
 
+# Hooks into request/response processing/for globally altering in/output
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
 )
 
+# Add the full Python import path to the root URLconf
 ROOT_URLCONF = 'correos_project.urls'
 
 # Python dotted path to the WSGI application used by Django's runserver.
 WSGI_APPLICATION = 'correos_project.wsgi.application'
 
+
 TEMPLATE_DIRS = (
-    # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
+    # Put strings here, like "/home/html/django_templates" or
+    # "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
 )
 
+# Add all apps to be installed
 INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.staticfiles',
