@@ -47,11 +47,28 @@ before we will have a look at the details:
 
 ..  _correosgraphics:
 
-.. image:: _static/correos.png
-    :width: 650px
-    :align: left
-    :alt: correos process
+..  graphviz::
 
+    digraph correos_process {
+            node [
+            fontsize = "22"
+            shape = "box"
+            style = "rounded"
+            margin = "0.3"
+        ];
+        subgraph cluster_1 {
+            
+            "CORREOS SMTPd" -> DATABASE [label="SQL"];
+            DATABASE -> "REST API" [label="SQL"];
+            "REST API" -> DATABASE;
+            label = "Django Framework";
+            style = "filled";
+        }
+        rankdir="LR";
+        MUA -> "CORREOS SMTPd"[label="SMTP"];
+        "REST API" -> WebAPP [label="HTTP"];
+        WebAPP -> "REST API";
+    }
 
 The *correos* mail server (SMTPd) is able to receive data from
 a mail user agent (MUA) via SMTP. So *correos* can handle any incoming data 
