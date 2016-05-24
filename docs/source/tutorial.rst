@@ -22,6 +22,11 @@ with the following issues:
     * `Simple Mail Transfer Protocol <https://en.wikipedia.org/wiki/Simple_Mail_Transfer_Protocol>`_
     * `Hypertext Transfer Protocol <https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol>`_
 
+For getting to know the basic ideas of Django, we recommend you:
+    
+    * `django-marcador tutorial <http://django-marcador.keimlink.de/>`_
+    * `django docs tutorial <https://docs.djangoproject.com/en/1.9/intro/>`_
+
 
 Introduction
 ============
