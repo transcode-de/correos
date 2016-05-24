@@ -17,12 +17,12 @@ class CorreosSMTPServer(SMTPServer):
         # mailfrom = envelope, from-information given to server by client
         # rcpttos = recipients, data = string containing content acc. RFC5321
         # Ignores emails send by hosts other than local
-        # Creates entities of Email from received messages
-        # Returns a list of Email objects
         if (settings.CORREOS_SMTP_LOCAL and
                 peer[0] not in (localhost,) + settings.INTERNAL_IPS):
                     sys.stderr.write('Ignored email from host %s\n' % peer[0])
         else:
+            # Calls Email manager function to create entities of Email and
+            # receives a list of Email objects
             emails = Email.objects.create_from_message(mailfrom, rcpttos, data)
             msg = 'Accepted email %s to %s from host %s\n'
             for email in emails:
