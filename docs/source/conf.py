@@ -176,7 +176,13 @@ html_static_path = ['_static']
 # html_use_smartypants = True
 
 # Custom sidebar templates, maps document names to template names.
-# html_sidebars = {}
+html_sidebars = {
+    '**': [
+        'about.html',
+        'navigation.html',
+        'searchbox.html',
+    ]
+}
 
 # Additional templates that should be rendered to pages, maps page names to
 # template names.
@@ -228,7 +234,7 @@ htmlhelp_basename = 'correosdoc'
 
 # -- Options for LaTeX output ---------------------------------------------
 
-latex_elements = {
+# latex_elements = {
 # The paper size ('letterpaper' or 'a4paper').
 # 'papersize': 'letterpaper',
 
@@ -240,7 +246,7 @@ latex_elements = {
 
 # Latex figure (float) alignment
 # 'figure_align': 'htbp',
-}
+# }
 
 # Grouping the document tree into LaTeX files. List of tuples
 # (source start file, target name, title,
