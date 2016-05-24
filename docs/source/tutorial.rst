@@ -177,3 +177,33 @@ server is instantiated, how it handles incoming emails send by a MUA and how
 the data of the emails is stored to the database. 
 
 Let's now discover what role the REST API plays.
+
+
+*correos* REST API 
+==================
+
+*Correos* comes with a REST API that makes all your stored email data
+availabe for further processing. This means that the REST API can receive
+requests from a web application (able to communicate via HTTP) and respond to it
+while sending the requested data in JSON format.
+
+To offer this, `Django REST framework <http://www.django-rest-framework.org/>`_
+was implemented into *correos*.
+
+The ``Django REST framework`` provides a way of serializing and deserializing
+data instances (our emails) into representations such as JSON. You can find
+the code in the ``serializers.py`` within your *correos* project. There you
+can see how the Serializer classes 'interact' with our models Email, Recipient
+and Domain.
+
+* "A view function, or view for short, is simply a Python function that takes a Web request and returns a Web response.."*
+    -- `Writing views | Django Documentation <https://docs.djangoproject.com/en/1.9/topics/http/views/>`_
+
+At the ``views.py`` you will find special ViewSets which are comparable to
+normal Django Views with some comfortable features. Since the 
+`Django REST framework <http://www.django-rest-framework.org/>`_ has a very 
+good documentation and a tutorial as well, you can get there all detail 
+information you need.
+
+At the web interface of *correos* you can visualize the REST API results
+via the 'API' button.
