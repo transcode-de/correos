@@ -23,7 +23,7 @@ Start the SMTP server to receive new emails::
 
 Send a test email (with the SMTP server still running)::
 
-    $ python manage.py testemail
+    $ python manage.py sendtestemail
 
 Configuration
 =============
