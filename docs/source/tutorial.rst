@@ -5,8 +5,8 @@ Tutorial
 ********
 
 This part of the documentation aims particulary at beginners in programming 
-and/or Django and will describe what specific code components are made for and 
-how everything in *correos* works together. If you simply want to get to know 
+and/or Django and will describe what specific code components *correos* are
+made for and how they work together. If you simply want to get to know 
 the usage and the facts of the REST API, please refer
 to :ref:`the usage chapter <usage>`. 
 
@@ -15,7 +15,7 @@ First please make sure that you have installed everything correctly
 (see: :ref:`installation <installation>`) that you will be able to follow
 and try out *correos* at your own device too.
 
-Besides, if necessary, it would be helpful if you would make yourself familiar 
+Besides, if necessary, it would be helpful, if you would make yourself familiar 
 with the following issues:
     * `client-server model <https://en.wikipedia.org/wiki/Client-server_model>`_
     * `OSI model <https://en.wikipedia.org/wiki/OSI_model>`_
@@ -72,22 +72,25 @@ before we will have a look at the details:
 
 The *correos* mail server (SMTPd) is able to receive data from
 a mail user agent (MUA) via SMTP. So *correos* can handle any incoming data 
-conforming the SMTP standard. To illustrate this process *correos* comes 
-with an own client function to send testmails as well. 
-The *correos* server will manage it to send the received email data to a 
-database where it will be stored.
+conforming the 
+`SMTP standard <https://en.wikipedia.org/wiki/Simple_Mail_Transfer_Protocol>`_. 
+To illustrate this process *correos* comes with an own client function to send 
+testmails as well. In practice, of course, the MUA is your own application whose
+email functionality you want to test. The *correos* server will manage it, to 
+send the received email data to a database where it will be stored. 
 The REST API is able to communicate with the database in both directions, 
 it can send and receive data from it.
-A web application of any kind able to communicate via HTTP, can 
+A web application of any kind (able to communicate via
+`HTTP <https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol>`_) can 
 connect to the REST API to receive and send data for further processing.
 *Correos* comes itself with a web interface, so it is comfortable for you to 
-watch the results.
+watch the results. Let's do this in the next chapter!
 
 
 Trying *correos*
 =================
 
-Now try it yourself to see how *correos* works. Open your terminal. If you are
+Now try it yourself and see how *correos* works. Open your terminal. If you are
 using a virtual environment please activate it and navigate to the *correos* 
 directory containing the file ``manage.py``. 
 
@@ -109,8 +112,8 @@ like this::
 
      $ python manage.py sendtestemail -c 5
 
-If you played around for a while, turn to the following chapters that offer 
-more information about the whole process.
+If you played around for a while and saw the results at your browser, turn to
+the following chapters that offer more information about the whole process.
 
 Understanding *correos* 
 =======================
@@ -127,20 +130,22 @@ models and database
     -- `Models | Django Documentation <https://docs.djangoproject.com/en/1.9/topics/db/models/>`_
 
 If you navigate to your *correos* project and open the file ``models.py`` you
-will find three models:
+will find three model classes:
     * Domain (represents information about the domain of the recipient's email server) 
     * Recipient (represents information about the recipient of the email)
     * Email (represents information about the email itself)
 
 You can see all attributes each model is containing and some functions as well.
-Note that the model Recipient contains a ForeignKey field called domain
+Note that the model Recipient contains a ForeignKey field called 'domain'
 which connects it to the Domain model (related_name is 'users'), likewise the 
-model Email has got one (recipient) that connects it to the Recipient model
-(related_name is 'emails').
+model Email has got one ('recipient') that connects it to the Recipient model
+(related_name is 'emails'). 
 
 The Email model contains a custom manager (EmailManager) as well, 
 assigned to `objects`. This manager contains important functionality, we will
 have a look at now.
+
+.. _custommanager:
 
 custom manager
 --------------
@@ -166,7 +171,7 @@ CorreosSMTPServer
 -----------------
 
 Let's now look at the heart of *correos*. Please open the file ``runsmtpd.py``
-which you will find inside your *correos* project at the management folder.
+which you will find inside your *correos* project within the management folder.
 
 As you can see, this file contains two class definitions. 
 
@@ -180,15 +185,16 @@ server running in the first place.
 The ``CorreosSMTPServer`` class contains a function called ``process_message``,
 which is responsible to check if the incoming email has a valid sender
 according to the *correos* settings. Setting details you will find in the
-:ref:`the usage chapter <usage>`.
+:ref:`usage chapter <usage>`.
 If the sender is valid, the ``create_the_message`` function will be called
-as discussed earlier.
+:ref:`as discussed earlier <custommanager>`.
 
-Please see the embedded code documentation as well to understand all.
+Please see the embedded code documentation as well to understand the
+functionality.
 
 
 That's it on the whole. Going back to our
-:ref:`graphics from the beginning <correosgraphics>`, you can see that we
+:ref:`graphics at the beginning <correosgraphics>`, you can see that we
 focused on the left side of the process so far. You saw how the *correos*
 server is instantiated, how it handles incoming emails send by a MUA and how
 the data of the emails is stored to the database. 
@@ -202,7 +208,10 @@ Let's now discover what role the REST API plays.
 *Correos* comes with a REST API that makes all your stored email data
 availabe for further processing. This means that the REST API can receive
 requests from a web application (able to communicate via HTTP) and respond to it
-while sending the requested data in JSON format.
+while sending the requested data in JSON. Since JSON is a language-independent
+data format and an international standard for data transmission, many
+pogramming languages support it. In that way, *correos* is a highly flexible 
+application and can be used for many different purposes.
 
 To offer this, `Django REST framework <http://www.django-rest-framework.org/>`_
 was implemented into *correos*.
