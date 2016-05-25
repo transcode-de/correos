@@ -12,8 +12,6 @@
 # All configuration values have a default; values that are commented out
 # serve to show the default.
 from datetime import date
-import sys
-import os
 
 import alabaster
 
@@ -181,6 +179,7 @@ html_sidebars = {
         'about.html',
         'navigation.html',
         'searchbox.html',
+        'relations.html',
     ]
 }
 
