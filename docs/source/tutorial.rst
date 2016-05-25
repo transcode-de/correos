@@ -126,7 +126,7 @@ linked above.
 models and database
 -------------------
 
-* "A model is the single, definitive source of information about your data. It contains the essential fields and behaviors of the data you’re storing. Generally, each model maps to a single database table."*
+    *"A model is the single, definitive source of information about your data. It contains the essential fields and behaviors of the data you’re storing. Generally, each model maps to a single database table."*
     -- `Models | Django Documentation <https://docs.djangoproject.com/en/1.9/topics/db/models/>`_
 
 If you navigate to your *correos* project and open the file ``models.py`` you
@@ -195,9 +195,9 @@ functionality.
 
 That's it on the whole. Going back to our
 :ref:`graphics at the beginning <correosgraphics>`, you can see that we
-focused on the left side of the process so far. You saw how the *correos*
-server is instantiated, how it handles incoming emails send by a MUA and how
-the data of the emails is stored to the database. 
+focused on the left side of the possible process so far. You saw how the 
+*correos* server is instantiated, how it handles incoming emails sent by a 
+MUA and how the data of the emails is stored to the database. 
 
 Let's now discover what role the REST API plays.
 
@@ -220,16 +220,21 @@ The ``Django REST framework`` provides a way of serializing and deserializing
 data instances (our emails) into representations such as JSON. You can find
 the code in the ``serializers.py`` within your *correos* project. There you
 can see how the Serializer classes 'interact' with our models Email, Recipient
-and Domain.
+and Domain. You can imagine the Serializer classes similar to Django Form
+classes.
 
-* "A view function, or view for short, is simply a Python function that takes a Web request and returns a Web response.."*
+    *"A view function, or view for short, is simply a Python function that takes a Web request and returns a Web response."*
     -- `Writing views | Django Documentation <https://docs.djangoproject.com/en/1.9/topics/http/views/>`_
 
-At the ``views.py`` you will find special ViewSets which are comparable to
-normal Django Views with some comfortable features. Since the 
-`Django REST framework <http://www.django-rest-framework.org/>`_ has a very 
-good documentation and a tutorial as well, you can get there all detail 
-information you need.
+At the ``views.py`` you will find two TemplateView classes (used to
+provide the response you get visiting the *correos* web interface) and special
+ViewSets classes (part of the REST framework) which are comparable to normal
+Django View classes with some comfortable features to provide JSON data output.
+You can see here the connection to the Serializer classes as well. 
+
+Since the `Django REST framework <http://www.django-rest-framework.org/>`_
+has a very good documentation and a tutorial as well, you can get there all 
+detail information you need.
 
 At the web interface of *correos* you can visualize the REST API results
 via the 'API' button.
