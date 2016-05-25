@@ -19,27 +19,41 @@ For installation and/or help, go to:
 virtual environment
 -------------------
 
+You can create a virtual environment using
+`virtualenv <https://virtualenv.pypa.io/en/latest/index.html>`_. 
+Please see its documentation for installation and further information.
+
 
 Project setup
 =============
 
-Clone the repository:
+At the moment *correos* requires the following:
 
+* Django (1.5.4)
+* django-filter (0.7)
+* django-uuidfield (0.4.0)
+* djangorestframework (2.3.8)
+* python-dateutil (1.5) 
 
-Enable the virtual environment:
+We recommend you to enable a virtual environment before installing *correos* to 
+avoid conflicts with other projects you are working on. 
 
+To clone the repository using git, please type::
 
-To set up the project (installing Django please execute following commands at your terminal::
+    $ git clone git@github.com:transcode-de/correos.git
+
+To set up the project please execute following commands at your terminal::
 
     $ pip install -r requirements/base.txt
     $ cd correos_project/
     $ python manage.py syncdb
 
 
-Documentation
-=============
+Documentation setup
+===================
 
-To view and build the documentation you first have install our documentation
+We use `Sphinx <http://www.sphinx-doc.org/en/stable/>`_ to document *correos*.
+To view it in your browser, you first have install the documentation
 dependencies::
 
     $ pip install -r requirements/docs.txt
