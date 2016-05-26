@@ -51,10 +51,8 @@ dependencies::
 
     $ pip install -r requirements/docs.txt
 
-After that you can go into the docs directory and build the documentation::
+Build the documentation::
 
-    $ cd docs/
-    docs/ $ make html
+    $ make -C docs html
 
 Finally you can find the documentation in the build directory.
-
