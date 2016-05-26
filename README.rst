@@ -46,7 +46,11 @@ available too. The REST API entry point is at ``/api/``.
 Documentation
 =============
 
-To view and build the documentation you first have install our documentation
+You can find the correos documentation at Read the Docs:
+
+    `correos docs <http://correos.readthedocs.io/en/latest/>`_
+
+To view and build the documentation yourself, you first have to install the
 dependencies::
 
     $ pip install -r requirements/docs.txt
