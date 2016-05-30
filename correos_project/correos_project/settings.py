@@ -114,6 +114,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'correos',
     'rest_framework',
+    'south',
 )
 
 SESSION_SERIALIZER = 'django.contrib.sessions.serializers.JSONSerializer'
