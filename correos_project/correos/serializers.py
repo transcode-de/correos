@@ -24,5 +24,5 @@ class EmailSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Email
         fields = ('url', 'uuid', 'message_id', 'sender', 'recipient',
-            'subject', 'date', 'is_multipart', 'header', 'body')
+                  'subject', 'date', 'is_multipart', 'header', 'body', 'is_read')
         depth = 2
