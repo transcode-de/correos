@@ -42,6 +42,7 @@ class Email(models.Model):
     is_multipart = models.BooleanField()
     header = models.TextField()
     body = models.TextField()
+    is_read = models.BooleanField(default=False)
 
     objects = EmailManager()
 
